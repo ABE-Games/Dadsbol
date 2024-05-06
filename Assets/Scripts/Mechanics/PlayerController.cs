@@ -32,43 +32,61 @@ namespace Mechanics
             // if a key has been pressed, move the player
             if (Input.anyKey)
             {
-                rigidBody.AddForce(PlayerMovement(cameraForward));
+                PlayerJump();
+                PlayerMovement(cameraForward);
                 PlayerRotation(horizontal, vertical);
+            }
+
+            OnIdle(horizontal, vertical);
+        }
+
+        private void PlayerJump()
+        {
+            // TODO: jumping does not feel good
+            // Jump the player if the space key is pressed
+            if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+            {
+                rigidBody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             }
         }
 
-        private Vector3 PlayerMovement(Vector3 cameraForward)
+        private void PlayerMovement(Vector3 cameraForward)
         {
-            Vector3 moveForce = Vector3.zero;
-
             if (Input.GetKey(KeyCode.W))
             {
-                moveForce = (Input.GetKey(KeyCode.LeftShift))
+                rigidBody.AddForce((Input.GetKey(KeyCode.LeftShift))
                     ? (speed * sprintBoost * cameraForward)
-                    : (speed * cameraForward);
+                    : (speed * cameraForward));
             }
 
             if (Input.GetKey(KeyCode.A))
-                moveForce = -cameraTransform.right * strafeSpeed;
+                rigidBody.AddForce(-cameraTransform.right * strafeSpeed);
 
             if (Input.GetKey(KeyCode.S))
-                moveForce = -cameraForward * speed;
+                rigidBody.AddForce(-cameraForward * speed);
 
             if (Input.GetKey(KeyCode.D))
-                moveForce = cameraTransform.right * strafeSpeed;
-
-            return moveForce;
+                rigidBody.AddForce(cameraTransform.right * strafeSpeed);
         }
 
         private void PlayerRotation(float horizontal, float vertical)
         {
-            Vector3 direction = new Vector3(horizontal, 0, -vertical).normalized;
+            Vector3 direction = new Vector3(horizontal, 0, -vertical);
 
             if (direction != Vector3.zero)
             {
                 // rotate the player to face the direction of movement
                 configurableJoint.targetRotation = Quaternion.LookRotation(direction);
             }
+        }
+
+        private void OnIdle(float horizontal, float vertical)
+        {
+            // NOTE: this is only for the idling drift issue when the player is not moving
+            // Freeze the player's rigidbody on idling
+            rigidBody.constraints = (horizontal == 0 && vertical == 0)
+                ? RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ
+                : RigidbodyConstraints.None;
         }
     }
 }

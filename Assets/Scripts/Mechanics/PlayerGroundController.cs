@@ -1,18 +1,27 @@
-using System.Collections;
-using System.Collections.Generic;
+using Gameplay;
 using UnityEngine;
+using static Core.Simulation;
 
-public class PlayerGroundController : MonoBehaviour
+namespace Mechanics
 {
-    // Start is called before the first frame update
-    void Start()
+    public class PlayerGroundController : MonoBehaviour
     {
-        
-    }
+        private void OnTriggerEnter(Collider collider)
+        {
+            if (collider.gameObject.CompareTag("Ground"))
+            {
+                var ev = Schedule<PlayerGroundState>();
+                ev.isGrounded = true;
+            }
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        private void OnTriggerExit(Collider collider)
+        {
+            if (collider.gameObject.CompareTag("Ground"))
+            {
+                var ev = Schedule<PlayerGroundState>();
+                ev.isGrounded = false;
+            }
+        }
     }
 }
