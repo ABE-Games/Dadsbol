@@ -10,6 +10,7 @@ namespace Mechanics
         [Range(50f, 200f)] public float sprintBoost;
         [Range(0, 100f)] public float jumpForce;
         public bool isGrounded;
+        public bool isABot;
 
         [Header("Properties")]
         public Rigidbody rigidBody;
@@ -18,26 +19,33 @@ namespace Mechanics
 
         private void FixedUpdate()
         {
-            // Move the direction of the player based on the movement direction
-            float horizontal = Input.GetAxis("Horizontal");
-            float vertical = Input.GetAxis("Vertical");
-
-            // Get the forward direction of the camera
-            Vector3 cameraForward = cameraTransform.forward;
-            cameraForward.y = 0f;
-
-            // Normalize the forward direction to ensure consistent speed
-            cameraForward.Normalize();
-
-            // if a key has been pressed, move the player
-            if (Input.anyKey)
+            if (!isABot)
             {
-                PlayerJump();
-                PlayerMovement(cameraForward);
-                PlayerRotation(horizontal, vertical);
-            }
+                // Move the direction of the player based on the movement direction
+                float horizontal = Input.GetAxis("Horizontal");
+                float vertical = Input.GetAxis("Vertical");
 
-            OnIdle(horizontal, vertical);
+                // Get the forward direction of the camera
+                Vector3 cameraForward = cameraTransform.forward;
+                cameraForward.y = 0f;
+
+                // Normalize the forward direction to ensure consistent speed
+                cameraForward.Normalize();
+
+                // if a key has been pressed, move the player
+                if (Input.anyKey)
+                {
+                    PlayerJump();
+                    PlayerMovement(cameraForward);
+                    PlayerRotation(horizontal, vertical);
+                }
+
+                OnIdle(horizontal, vertical);
+            }
+            else
+            {
+                OnIdle();
+            }
         }
 
         private void PlayerJump()
@@ -87,6 +95,13 @@ namespace Mechanics
             rigidBody.constraints = (horizontal == 0 && vertical == 0)
                 ? RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ
                 : RigidbodyConstraints.None;
+        }
+
+        private void OnIdle()
+        {
+            // NOTE: this is only for the idling drift issue when the player is not moving
+            // Freeze the player's rigidbody on idling
+            rigidBody.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
         }
     }
 }
