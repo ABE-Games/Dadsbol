@@ -235,6 +235,7 @@ MonoBehaviour:
   sprintBoost: 50
   jumpForce: 50
   isGrounded: 0
+  isABot: 0
   rigidBody: {fileID: 7060945191295711942}
   cameraTransform: {fileID: 0}
   configurableJoint: {fileID: 7060945191295711941}

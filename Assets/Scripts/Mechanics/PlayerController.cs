@@ -63,18 +63,24 @@ namespace Mechanics
             if (Input.GetKey(KeyCode.W))
             {
                 rigidBody.AddForce((Input.GetKey(KeyCode.LeftShift))
-                    ? (speed * sprintBoost * cameraForward)
+                    ? ((speed + sprintBoost) * cameraForward)
                     : (speed * cameraForward));
             }
 
             if (Input.GetKey(KeyCode.A))
-                rigidBody.AddForce(-cameraTransform.right * strafeSpeed);
+                rigidBody.AddForce((Input.GetKey(KeyCode.LeftShift))
+                    ? ((sprintBoost + strafeSpeed) * -cameraTransform.right)
+                    : (-cameraTransform.right * strafeSpeed));
 
             if (Input.GetKey(KeyCode.S))
-                rigidBody.AddForce(-cameraForward * speed);
+                rigidBody.AddForce((Input.GetKey(KeyCode.LeftShift))
+                    ? ((speed + sprintBoost) * -cameraForward)
+                    : (-speed * cameraForward));
 
             if (Input.GetKey(KeyCode.D))
-                rigidBody.AddForce(cameraTransform.right * strafeSpeed);
+                rigidBody.AddForce((Input.GetKey(KeyCode.LeftShift))
+                    ? ((sprintBoost + strafeSpeed) * cameraTransform.right)
+                    : (strafeSpeed * cameraTransform.right));
         }
 
         private void PlayerRotation(float horizontal, float vertical)
