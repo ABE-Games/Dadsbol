@@ -4,49 +4,71 @@ namespace Mechanics
 {
     public class PlayerController : MonoBehaviour
     {
-        [Range(0, 100f)] public float speed = 10.0f;
-        [Range(0, 100f)] public float strafeSpeed;
-        [Range(0, 100f)] public float jumpForce = 10.0f;
-
-        public Rigidbody rb;
+        [Header("Player Movement Controls")]
+        [Range(50f, 200f)] public float speed;
+        [Range(50f, 200f)] public float strafeSpeed;
+        [Range(50f, 200f)] public float sprintBoost;
+        [Range(0, 100f)] public float jumpForce;
         public bool isGrounded;
 
-
-        private void Start()
-        {
-            rb = GetComponent<Rigidbody>();
-        }
+        [Header("Properties")]
+        public Rigidbody rigidBody;
+        public Transform cameraTransform;
+        public ConfigurableJoint configurableJoint;
 
         private void FixedUpdate()
         {
-            if (Input.GetKey(KeyCode.W))
-            {
-                if (Input.GetKey(KeyCode.LeftShift))
-                {
-                    rb.AddForce(rb.transform.forward * speed * 1.5f);
-                }
-                else
-                {
-                    rb.AddForce(rb.transform.forward * speed);
-                }
-                Debug.Log("called");
-            }
+            // Move the direction of the player based on the movement direction
+            float horizontal = Input.GetAxis("Horizontal");
+            float vertical = Input.GetAxis("Vertical");
 
-            if (Input.GetKey(KeyCode.S))
-            {
-                rb.AddForce(-rb.transform.forward * speed);
-            }
+            // Get the forward direction of the camera
+            Vector3 cameraForward = cameraTransform.forward;
+            cameraForward.y = 0f;
 
-            if (Input.GetKey(KeyCode.A))
-            {
-                rb.AddForce(-rb.transform.right * strafeSpeed);
-            }
+            // Normalize the forward direction to ensure consistent speed
+            cameraForward.Normalize();
 
-            if (Input.GetKey(KeyCode.D))
+            // if a key has been pressed, move the player
+            if (Input.anyKey)
             {
-                rb.AddForce(rb.transform.right * strafeSpeed);
+                rigidBody.AddForce(PlayerMovement(cameraForward));
+                PlayerRotation(horizontal, vertical);
             }
         }
 
+        private Vector3 PlayerMovement(Vector3 cameraForward)
+        {
+            Vector3 moveForce = Vector3.zero;
+
+            if (Input.GetKey(KeyCode.W))
+            {
+                moveForce = (Input.GetKey(KeyCode.LeftShift))
+                    ? (speed * sprintBoost * cameraForward)
+                    : (speed * cameraForward);
+            }
+
+            if (Input.GetKey(KeyCode.A))
+                moveForce = -cameraTransform.right * strafeSpeed;
+
+            if (Input.GetKey(KeyCode.S))
+                moveForce = -cameraForward * speed;
+
+            if (Input.GetKey(KeyCode.D))
+                moveForce = cameraTransform.right * strafeSpeed;
+
+            return moveForce;
+        }
+
+        private void PlayerRotation(float horizontal, float vertical)
+        {
+            Vector3 direction = new Vector3(horizontal, 0, -vertical).normalized;
+
+            if (direction != Vector3.zero)
+            {
+                // rotate the player to face the direction of movement
+                configurableJoint.targetRotation = Quaternion.LookRotation(direction);
+            }
+        }
     }
 }

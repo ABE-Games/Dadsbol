@@ -773,6 +773,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2867200768877607659}
   - component: {fileID: 3206993136230162514}
+  - component: {fileID: 3206993136230162515}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -801,6 +802,26 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3206993136230162515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3206993136230162513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d795b0bc29bb5cb44a751cbf6db74d97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 100
+  strafeSpeed: 100
+  sprintBoost: 50
+  jumpForce: 10
+  isGrounded: 1
+  rigidBody: {fileID: 6858634583494323262}
+  cameraTransform: {fileID: 963194228}
+  configurableJoint: {fileID: 6858634583494323261}
 --- !u!4 &3338231128182164210
 Transform:
   m_ObjectHideFlags: 0
@@ -861,6 +882,7 @@ GameObject:
   - component: {fileID: 8409742483111852705}
   - component: {fileID: 8409742483111852704}
   - component: {fileID: 8409742483111852706}
+  - component: {fileID: 8409742483111852707}
   m_Layer: 6
   m_Name: Pelvis.L
   m_TagString: Untagged
@@ -994,12 +1016,12 @@ ConfigurableJoint:
   m_RotationDriveMode: 0
   m_AngularXDrive:
     serializedVersion: 3
-    positionSpring: 10
+    positionSpring: 5
     positionDamper: 0
     maximumForce: 3.4028233e+38
   m_AngularYZDrive:
     serializedVersion: 3
-    positionSpring: 10
+    positionSpring: 5
     positionDamper: 0
     maximumForce: 3.4028233e+38
   m_SlerpDrive:
@@ -1028,7 +1050,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 1
-  m_AngularDrag: 1
+  m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -1044,10 +1066,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.0038538098
-  m_Height: 0.007707624
+  m_Radius: 0.0021427528
+  m_Height: 0.0046938774
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: -0.0023085375, y: -1.0749968e-11, z: 2.950134e-11}
 --- !u!4 &5085603932116672236
 Transform:
   m_ObjectHideFlags: 0
@@ -1136,12 +1158,12 @@ ConfigurableJoint:
   m_RotationDriveMode: 0
   m_AngularXDrive:
     serializedVersion: 3
-    positionSpring: 25
+    positionSpring: 10
     positionDamper: 0
     maximumForce: 3.4028233e+38
   m_AngularYZDrive:
     serializedVersion: 3
-    positionSpring: 25
+    positionSpring: 10
     positionDamper: 0
     maximumForce: 3.4028233e+38
   m_SlerpDrive:
@@ -1170,7 +1192,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 1
-  m_AngularDrag: 1
+  m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -1186,10 +1208,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.010563312
-  m_Height: 0.023577847
+  m_Radius: 0.008507479
+  m_Height: 0.021300813
   m_Direction: 1
-  m_Center: {x: 0, y: 0.0079351, z: 0}
+  m_Center: {x: 0, y: 0.010343066, z: 0}
 --- !u!1 &5204140636906338081
 GameObject:
   m_ObjectHideFlags: 0
@@ -1314,7 +1336,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 1
-  m_AngularDrag: 1
+  m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -1617,7 +1639,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 1
-  m_AngularDrag: 1
+  m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -1781,7 +1803,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 1
-  m_AngularDrag: 1
+  m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -2035,7 +2057,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5548795181601627727}
   - component: {fileID: 7460949235648645368}
-  - component: {fileID: 7460949235648645367}
+  - component: {fileID: 7460949235648645370}
   - component: {fileID: 7460949235648645369}
   m_Layer: 6
   m_Name: Elbow.L
@@ -2044,7 +2066,37 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!153 &7460949235648645367
+--- !u!54 &7460949235648645368
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7460949235648645366}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 1
+  m_AngularDrag: 0
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!136 &7460949235648645369
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7460949235648645366}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.0031673238
+  m_Height: 0.0063346513
+  m_Direction: 1
+  m_Center: {x: 0.0006864862, y: 0.00016092873, z: -8.953175e-12}
+--- !u!153 &7460949235648645370
 ConfigurableJoint:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2056,7 +2108,7 @@ ConfigurableJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.3547213, y: 1.308292, z: 0.024925662}
+  m_ConnectedAnchor: {x: 0, y: 0, z: 0}
   serializedVersion: 2
   m_SecondaryAxis: {x: 0, y: 1, z: 0}
   m_XMotion: 0
@@ -2116,12 +2168,12 @@ ConfigurableJoint:
   m_RotationDriveMode: 0
   m_AngularXDrive:
     serializedVersion: 3
-    positionSpring: 10
+    positionSpring: 5
     positionDamper: 0
     maximumForce: 3.4028233e+38
   m_AngularYZDrive:
     serializedVersion: 3
-    positionSpring: 10
+    positionSpring: 5
     positionDamper: 0
     maximumForce: 3.4028233e+38
   m_SlerpDrive:
@@ -2140,36 +2192,6 @@ ConfigurableJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!54 &7460949235648645368
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7460949235648645366}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 1
-  m_AngularDrag: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!136 &7460949235648645369
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7460949235648645366}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.0038538098
-  m_Height: 0.007707624
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!4 &8057016877867327392
 Transform:
   m_ObjectHideFlags: 0
@@ -2217,6 +2239,7 @@ GameObject:
   - component: {fileID: 8301937495732065571}
   - component: {fileID: 8301937495732065570}
   - component: {fileID: 8301937495732065572}
+  - component: {fileID: 8301937495732065573}
   m_Layer: 6
   m_Name: Pelvis.R
   m_TagString: Untagged
@@ -2330,7 +2353,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 1
-  m_AngularDrag: 1
+  m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -2350,6 +2373,18 @@ CapsuleCollider:
   m_Height: 0.013193917
   m_Direction: 1
   m_Center: {x: 7.837861e-28, y: 0.008229235, z: -3.6178736e-25}
+--- !u!114 &8301937495732065573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8301937495732065569}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1c603a2dfb0b1b4fad8c425c0510172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8340881251533824113
 GameObject:
   m_ObjectHideFlags: 0
@@ -2441,12 +2476,12 @@ ConfigurableJoint:
   m_RotationDriveMode: 0
   m_AngularXDrive:
     serializedVersion: 3
-    positionSpring: 10
+    positionSpring: 5
     positionDamper: 0
     maximumForce: 3.4028233e+38
   m_AngularYZDrive:
     serializedVersion: 3
-    positionSpring: 10
+    positionSpring: 5
     positionDamper: 0
     maximumForce: 3.4028233e+38
   m_SlerpDrive:
@@ -2475,7 +2510,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 1
-  m_AngularDrag: 1
+  m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -2491,10 +2526,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.0038538098
-  m_Height: 0.007707624
+  m_Radius: 0.0033480711
+  m_Height: 0.0066961423
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: -0.00080456375, y: 4.1265255e-12, z: 6.324726e-12}
 --- !u!4 &8409742483111852703
 Transform:
   m_ObjectHideFlags: 0
@@ -2617,7 +2652,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 1
-  m_AngularDrag: 1
+  m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -2637,6 +2672,18 @@ CapsuleCollider:
   m_Height: 0.013402072
   m_Direction: 1
   m_Center: {x: 0, y: -0.008267056, z: 0}
+--- !u!114 &8409742483111852707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4428338827116894738}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1c603a2dfb0b1b4fad8c425c0510172, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &8465417399595179312
 Transform:
   m_ObjectHideFlags: 0
@@ -2725,12 +2772,12 @@ ConfigurableJoint:
   m_RotationDriveMode: 0
   m_AngularXDrive:
     serializedVersion: 3
-    positionSpring: 10
+    positionSpring: 5
     positionDamper: 0
     maximumForce: 3.4028233e+38
   m_AngularYZDrive:
     serializedVersion: 3
-    positionSpring: 10
+    positionSpring: 5
     positionDamper: 0
     maximumForce: 3.4028233e+38
   m_SlerpDrive:
@@ -2759,7 +2806,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 1
-  m_AngularDrag: 1
+  m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -2775,10 +2822,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.0038538098
-  m_Height: 0.007707624
+  m_Radius: 0.0031207285
+  m_Height: 0.0064596715
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: -0.00073308125, y: -0.00062397285, z: 3.5374772e-12}
 --- !u!1 &8693632004454908756
 GameObject:
   m_ObjectHideFlags: 0
@@ -2870,12 +2917,12 @@ ConfigurableJoint:
   m_RotationDriveMode: 0
   m_AngularXDrive:
     serializedVersion: 3
-    positionSpring: 10
+    positionSpring: 5
     positionDamper: 0
     maximumForce: 3.4028233e+38
   m_AngularYZDrive:
     serializedVersion: 3
-    positionSpring: 10
+    positionSpring: 5
     positionDamper: 0
     maximumForce: 3.4028233e+38
   m_SlerpDrive:
@@ -2904,7 +2951,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 1
-  m_AngularDrag: 1
+  m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -2920,10 +2967,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.0038538098
-  m_Height: 0.007707624
+  m_Radius: 0.0018286891
+  m_Height: 0.004492376
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0.0020250985, y: 0.000059540627, z: -3.861434e-11}
 --- !u!4 &8777347364157968169
 Transform:
   m_ObjectHideFlags: 0
@@ -3046,12 +3093,12 @@ ConfigurableJoint:
   m_RotationDriveMode: 0
   m_AngularXDrive:
     serializedVersion: 3
-    positionSpring: 10
+    positionSpring: 5
     positionDamper: 0
     maximumForce: 3.4028233e+38
   m_AngularYZDrive:
     serializedVersion: 3
-    positionSpring: 10
+    positionSpring: 5
     positionDamper: 0
     maximumForce: 3.4028233e+38
   m_SlerpDrive:
@@ -3080,7 +3127,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 1
-  m_AngularDrag: 1
+  m_AngularDrag: 0
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
@@ -3096,10 +3143,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.0038538098
-  m_Height: 0.007707624
+  m_Radius: 0.003183375
+  m_Height: 0.0063667544
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0.00067043514, y: 0.00066975405, z: -1.0995844e-11}
 --- !u!137 &9150038845001638539
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
