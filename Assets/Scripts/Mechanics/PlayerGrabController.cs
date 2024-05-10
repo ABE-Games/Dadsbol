@@ -32,6 +32,8 @@ public class PlayerGrabController : MonoBehaviour
                     Rigidbody rb = grabbedObject.GetComponent<Rigidbody>();
                     rb.isKinematic = true;
                 }
+
+                model.playerController.animator.SetBool("Grabbing", true);
             }
             else
             {
@@ -54,6 +56,8 @@ public class PlayerGrabController : MonoBehaviour
                         StartCoroutine(ReleaseGrabbedObject());
                     }
                 }
+
+                model.playerController.animator.SetBool("Grabbing", false);
             }
         }
     }

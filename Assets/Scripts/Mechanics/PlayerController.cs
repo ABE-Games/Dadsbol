@@ -5,9 +5,9 @@ namespace Mechanics
     public class PlayerController : MonoBehaviour
     {
         [Header("Player Movement Controls")]
-        [Range(50f, 200f)] public float speed;
-        [Range(50f, 200f)] public float strafeSpeed;
-        [Range(50f, 200f)] public float sprintBoost;
+        [Range(0f, 200f)] public float speed;
+        [Range(0f, 200f)] public float strafeSpeed;
+        [Range(0f, 200f)] public float sprintBoost;
         [Range(0, 100f)] public float jumpForce;
         [Range(0, 20f)] public float throwForce;
         public bool isGrounded;
@@ -17,6 +17,7 @@ namespace Mechanics
         public Rigidbody rigidBody;
         public Transform cameraTransform;
         public ConfigurableJoint configurableJoint;
+        public Animator animator;
 
         private void FixedUpdate()
         {
@@ -86,7 +87,7 @@ namespace Mechanics
 
         private void PlayerRotation(float horizontal, float vertical)
         {
-            Vector3 direction = new Vector3(horizontal, 0, -vertical);
+            Vector3 direction = new Vector3(-horizontal, 0, vertical);
 
             if (direction != Vector3.zero)
             {
