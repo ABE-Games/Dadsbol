@@ -363,7 +363,7 @@ GameObject:
   - component: {fileID: 259785962}
   m_Layer: 0
   m_Name: Ball (2)
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -834,7 +834,7 @@ GameObject:
   - component: {fileID: 862956530}
   m_Layer: 0
   m_Name: Ball (1)
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1067,6 +1067,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 1320329472902231721, guid: 636cebd034e31c244985c0c302070553, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1320329472902231723, guid: 636cebd034e31c244985c0c302070553, type: 3}
       propertyPath: isABot
       value: 1
@@ -1271,7 +1275,7 @@ GameObject:
   - component: {fileID: 1742245780}
   m_Layer: 0
   m_Name: Ball
-  m_TagString: Untagged
+  m_TagString: Interactable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1384,6 +1388,10 @@ PrefabInstance:
     - target: {fileID: 1320329472902231721, guid: 636cebd034e31c244985c0c302070553, type: 3}
       propertyPath: m_Name
       value: Player (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1320329472902231721, guid: 636cebd034e31c244985c0c302070553, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1320329472902231723, guid: 636cebd034e31c244985c0c302070553, type: 3}
       propertyPath: isABot
@@ -1622,6 +1630,10 @@ PrefabInstance:
     - target: {fileID: 1320329472902231721, guid: 636cebd034e31c244985c0c302070553, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1320329472902231723, guid: 636cebd034e31c244985c0c302070553, type: 3}
+      propertyPath: throwForce
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1320329472902231723, guid: 636cebd034e31c244985c0c302070553, type: 3}
       propertyPath: cameraTransform

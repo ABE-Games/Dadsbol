@@ -9,6 +9,7 @@ namespace Mechanics
         [Range(50f, 200f)] public float strafeSpeed;
         [Range(50f, 200f)] public float sprintBoost;
         [Range(0, 100f)] public float jumpForce;
+        [Range(0, 20f)] public float throwForce;
         public bool isGrounded;
         public bool isABot;
 
