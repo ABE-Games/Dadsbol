@@ -12,7 +12,9 @@ namespace UI
 
         public void StopGame()
         {
+            
             Application.Quit();
+            Debug.Log("quit");
         }
     }
 }
