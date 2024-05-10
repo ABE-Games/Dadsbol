@@ -5,23 +5,22 @@ public class PlayerAnimationController : MonoBehaviour
 {
     [SerializeField] private Animator animator;
 
-    private PlayerController playerController;
+    private PlayerController player;
 
     private void Start()
     {
-        playerController = GetComponent<PlayerController>();
+        player = GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
     private void Update()
     {
-        if (!playerController.isABot)
-        {
-            // Move the direction of the player based on the movement direction
-            float horizontal = Input.GetAxis("Horizontal");
-            float vertical = Input.GetAxis("Vertical");
+        float velocity = Mathf.Abs(player.velocity.x) + Mathf.Abs(player.velocity.z);
+        animator.SetFloat("Velocity", Mathf.Abs(player.velocity.x) + Mathf.Abs(player.velocity.z));
 
-            animator.SetFloat("Velocity", Mathf.Abs(horizontal) + Mathf.Abs(vertical));
+        if (velocity > 0)
+        {
+            player.dustParticleSystem.Play();
         }
     }
 }

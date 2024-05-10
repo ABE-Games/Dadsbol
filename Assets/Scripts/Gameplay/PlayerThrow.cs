@@ -12,7 +12,7 @@ namespace Gameplay
 
         public override void Execute()
         {
-            objectRigidBody.AddForce(direction.forward.normalized * model.playerController.throwForce, ForceMode.Impulse);
+            objectRigidBody.AddForce(direction.forward.normalized * model.player.throwForce, ForceMode.Impulse);
         }
     }
 }

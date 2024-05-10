@@ -5,12 +5,15 @@ namespace Mechanics
     public class PlayerController : MonoBehaviour
     {
         [Header("Player Movement Controls")]
+        public Vector3 velocity;
         [Range(0f, 200f)] public float speed;
         [Range(0f, 200f)] public float strafeSpeed;
         [Range(0f, 200f)] public float sprintBoost;
         [Range(0, 100f)] public float jumpForce;
         [Range(0, 20f)] public float throwForce;
         public bool isGrounded;
+
+        [Header("Bot Controls")]
         public bool isABot;
 
         [Header("Properties")]
@@ -18,6 +21,7 @@ namespace Mechanics
         public Transform cameraTransform;
         public ConfigurableJoint configurableJoint;
         public Animator animator;
+        public ParticleSystem dustParticleSystem;
 
         private void FixedUpdate()
         {
@@ -26,6 +30,8 @@ namespace Mechanics
                 // Move the direction of the player based on the movement direction
                 float horizontal = Input.GetAxis("Horizontal");
                 float vertical = Input.GetAxis("Vertical");
+
+                velocity = new Vector3(horizontal, 0, vertical);
 
                 // Get the forward direction of the camera
                 Vector3 cameraForward = cameraTransform.forward;
@@ -39,14 +45,11 @@ namespace Mechanics
                 {
                     PlayerJump();
                     PlayerMovement(cameraForward);
-                    PlayerRotation(horizontal, vertical);
+                    PlayerRotation(velocity.x, velocity.z);
                 }
 
                 OnIdle(horizontal, vertical);
-            }
-            else
-            {
-                OnIdle();
+
             }
         }
 
@@ -57,6 +60,7 @@ namespace Mechanics
             if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
             {
                 rigidBody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+                dustParticleSystem.Play();
             }
         }
 
@@ -70,19 +74,24 @@ namespace Mechanics
             }
 
             if (Input.GetKey(KeyCode.A))
+            {
                 rigidBody.AddForce((Input.GetKey(KeyCode.LeftShift))
                     ? ((sprintBoost + strafeSpeed) * -cameraTransform.right)
                     : (-cameraTransform.right * strafeSpeed));
+            }
 
             if (Input.GetKey(KeyCode.S))
+            {
                 rigidBody.AddForce((Input.GetKey(KeyCode.LeftShift))
                     ? ((speed + sprintBoost) * -cameraForward)
                     : (-speed * cameraForward));
-
+            }
             if (Input.GetKey(KeyCode.D))
+            {
                 rigidBody.AddForce((Input.GetKey(KeyCode.LeftShift))
                     ? ((sprintBoost + strafeSpeed) * cameraTransform.right)
                     : (strafeSpeed * cameraTransform.right));
+            }
         }
 
         private void PlayerRotation(float horizontal, float vertical)
@@ -103,13 +112,6 @@ namespace Mechanics
             rigidBody.constraints = (horizontal == 0 && vertical == 0)
                 ? RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ
                 : RigidbodyConstraints.None;
-        }
-
-        private void OnIdle()
-        {
-            // NOTE: this is only for the idling drift issue when the player is not moving
-            // Freeze the player's rigidbody on idling
-            rigidBody.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
         }
     }
 }

@@ -10,7 +10,7 @@ namespace Gameplay
 
         public override void Execute()
         {
-            model.playerController.isGrounded = isGrounded;
+            model.player.isGrounded = isGrounded;
         }
     }
 }

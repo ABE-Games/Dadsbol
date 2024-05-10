@@ -15,7 +15,7 @@ public class PlayerGrabController : MonoBehaviour
 
     private void Update()
     {
-        if (!model.playerController.isABot)
+        if (!model.player.isABot)
         {
             if (Input.GetKey(KeyCode.Mouse0))
             {
@@ -33,7 +33,7 @@ public class PlayerGrabController : MonoBehaviour
                     rb.isKinematic = true;
                 }
 
-                model.playerController.animator.SetBool("Grabbing", true);
+                model.player.animator.SetBool("Grabbing", true);
             }
             else
             {
@@ -57,7 +57,7 @@ public class PlayerGrabController : MonoBehaviour
                     }
                 }
 
-                model.playerController.animator.SetBool("Grabbing", false);
+                model.player.animator.SetBool("Grabbing", false);
             }
         }
     }
