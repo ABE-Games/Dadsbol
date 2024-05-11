@@ -8,6 +8,9 @@ using static Core.Simulation;
 public class PlayerGrabController : MonoBehaviour
 {
     [SerializeField] private Transform objectPlacement;
+    //[SerializeField] private ConfigurableJoint leftHandJoint;
+    //[SerializeField] private ConfigurableJoint rightHandJoint;
+
     private GameObject grabbedObject;
     [SerializeField] private bool isGrabbing;
 
@@ -29,6 +32,8 @@ public class PlayerGrabController : MonoBehaviour
                 // Disable the rigidbody of the object so it doesn't fall
                 Rigidbody rb = grabbedObject.GetComponent<Rigidbody>();
                 rb.isKinematic = true;
+
+                // Fix joint the left and right hands
             }
 
             model.player.animator.SetBool("Grabbing", true);

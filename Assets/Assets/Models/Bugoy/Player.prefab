@@ -2050,6 +2050,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   objectPlacement: {fileID: 5996833397710575421}
+  leftHandJoint: {fileID: 0}
+  rightHandJoint: {fileID: 0}
   isGrabbing: 0
 --- !u!1 &5996833397710575420
 GameObject:
@@ -2320,6 +2322,7 @@ MonoBehaviour:
   jumpForce: 50
   throwForce: 10
   isGrounded: 0
+  allowGrabAndThrow: 0
   isABot: 0
   rigidBody: {fileID: 3266015314477885520}
   cameraTransform: {fileID: 0}

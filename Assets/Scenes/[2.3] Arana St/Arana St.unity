@@ -197,7 +197,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &329246907
 PrefabInstance:
@@ -208,7 +208,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 544669086396934677, guid: bc747eba5c4a48445bbc2f9e09ed6992, type: 3}
       propertyPath: m_RootOrder
-      value: 16
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 544669086396934677, guid: bc747eba5c4a48445bbc2f9e09ed6992, type: 3}
       propertyPath: m_LocalPosition.x
@@ -257,6 +257,10 @@ PrefabInstance:
     - target: {fileID: 920103256433307823, guid: bc747eba5c4a48445bbc2f9e09ed6992, type: 3}
       propertyPath: m_Name
       value: Team Bot (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 920103256433307823, guid: bc747eba5c4a48445bbc2f9e09ed6992, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc747eba5c4a48445bbc2f9e09ed6992, type: 3}
@@ -450,7 +454,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 90}
 --- !u!1001 &382981444
 PrefabInstance:
@@ -465,7 +469,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2606805168243584968, guid: 1047dbbfd9ec8f8448d99ec49d6608b3, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 2606805168243584968, guid: 1047dbbfd9ec8f8448d99ec49d6608b3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -477,7 +481,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2606805168243584968, guid: 1047dbbfd9ec8f8448d99ec49d6608b3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7.58
+      value: 3.58
       objectReference: {fileID: 0}
     - target: {fileID: 2606805168243584968, guid: 1047dbbfd9ec8f8448d99ec49d6608b3, type: 3}
       propertyPath: m_LocalRotation.w
@@ -546,7 +550,7 @@ Transform:
   - {fileID: 907439977}
   - {fileID: 1940641190}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &594428867
 GameObject:
@@ -578,6 +582,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &650019967
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 650019968}
+  m_Layer: 0
+  m_Name: "\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501\u2501"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &650019968
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 650019967}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.6039953, y: -28.763365, z: 29.241821}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &665545376
 GameObject:
@@ -770,7 +805,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 544669086396934677, guid: bc747eba5c4a48445bbc2f9e09ed6992, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 544669086396934677, guid: bc747eba5c4a48445bbc2f9e09ed6992, type: 3}
       propertyPath: m_LocalPosition.x
@@ -819,6 +854,10 @@ PrefabInstance:
     - target: {fileID: 920103256433307823, guid: bc747eba5c4a48445bbc2f9e09ed6992, type: 3}
       propertyPath: m_Name
       value: Team Bot (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 920103256433307823, guid: bc747eba5c4a48445bbc2f9e09ed6992, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc747eba5c4a48445bbc2f9e09ed6992, type: 3}
@@ -923,7 +962,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 544669086396934677, guid: bc747eba5c4a48445bbc2f9e09ed6992, type: 3}
       propertyPath: m_RootOrder
-      value: 14
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 544669086396934677, guid: bc747eba5c4a48445bbc2f9e09ed6992, type: 3}
       propertyPath: m_LocalPosition.x
@@ -972,6 +1011,10 @@ PrefabInstance:
     - target: {fileID: 920103256433307823, guid: bc747eba5c4a48445bbc2f9e09ed6992, type: 3}
       propertyPath: m_Name
       value: Team Bot (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 920103256433307823, guid: bc747eba5c4a48445bbc2f9e09ed6992, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc747eba5c4a48445bbc2f9e09ed6992, type: 3}
@@ -1263,6 +1306,11 @@ Transform:
   m_Father: {fileID: 475690972}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &1468585495 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 2606805168243584964, guid: 1047dbbfd9ec8f8448d99ec49d6608b3, type: 3}
+  m_PrefabInstance: {fileID: 2606805168785137744}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1589196417
 GameObject:
   m_ObjectHideFlags: 0
@@ -1415,7 +1463,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 544669086396934677, guid: bc747eba5c4a48445bbc2f9e09ed6992, type: 3}
       propertyPath: m_RootOrder
-      value: 15
+      value: 16
       objectReference: {fileID: 0}
     - target: {fileID: 544669086396934677, guid: bc747eba5c4a48445bbc2f9e09ed6992, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1464,6 +1512,10 @@ PrefabInstance:
     - target: {fileID: 920103256433307823, guid: bc747eba5c4a48445bbc2f9e09ed6992, type: 3}
       propertyPath: m_Name
       value: Team Bot (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 920103256433307823, guid: bc747eba5c4a48445bbc2f9e09ed6992, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc747eba5c4a48445bbc2f9e09ed6992, type: 3}
@@ -1604,7 +1656,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 90}
 --- !u!1 &2094927534
 GameObject:
@@ -1675,7 +1727,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2606805168243584968, guid: 1047dbbfd9ec8f8448d99ec49d6608b3, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2606805168243584968, guid: 1047dbbfd9ec8f8448d99ec49d6608b3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1687,7 +1739,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2606805168243584968, guid: 1047dbbfd9ec8f8448d99ec49d6608b3, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7.58
+      value: 3.58
       objectReference: {fileID: 0}
     - target: {fileID: 2606805168243584968, guid: 1047dbbfd9ec8f8448d99ec49d6608b3, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1728,7 +1780,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 544669086396934677, guid: bc747eba5c4a48445bbc2f9e09ed6992, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 544669086396934677, guid: bc747eba5c4a48445bbc2f9e09ed6992, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1778,6 +1830,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Team Bot
       objectReference: {fileID: 0}
+    - target: {fileID: 920103256433307823, guid: bc747eba5c4a48445bbc2f9e09ed6992, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc747eba5c4a48445bbc2f9e09ed6992, type: 3}
 --- !u!1001 &5996833396878878576
@@ -1787,13 +1843,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1693085879494522856, guid: 636cebd034e31c244985c0c302070553, type: 3}
+      propertyPath: m_ConnectedBody
+      value: 
+      objectReference: {fileID: 1468585495}
+    - target: {fileID: 1738905005497321381, guid: 636cebd034e31c244985c0c302070553, type: 3}
+      propertyPath: m_Mass
+      value: 0.0000001
+      objectReference: {fileID: 0}
     - target: {fileID: 4534867846036167550, guid: 636cebd034e31c244985c0c302070553, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 699a6a80928d6ce48a126b94ef625c77, type: 2}
+    - target: {fileID: 4776793376244653959, guid: 636cebd034e31c244985c0c302070553, type: 3}
+      propertyPath: m_Mass
+      value: 0.0000001
+      objectReference: {fileID: 0}
     - target: {fileID: 6176585355706171065, guid: 636cebd034e31c244985c0c302070553, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 6176585355706171065, guid: 636cebd034e31c244985c0c302070553, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1851,6 +1919,10 @@ PrefabInstance:
       propertyPath: cameraTransform
       value: 
       objectReference: {fileID: 963194228}
+    - target: {fileID: 7517470844316734704, guid: 636cebd034e31c244985c0c302070553, type: 3}
+      propertyPath: m_ConnectedBody
+      value: 
+      objectReference: {fileID: 1468585495}
     - target: {fileID: 7855958667467878354, guid: 636cebd034e31c244985c0c302070553, type: 3}
       propertyPath: botSpeed
       value: 100
