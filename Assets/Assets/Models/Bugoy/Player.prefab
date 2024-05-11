@@ -2633,9 +2633,10 @@ MonoBehaviour:
   staminaSlider: {fileID: 2259194076054090592}
   background: {fileID: 2854957832381357021}
   fill: {fileID: 8726635736957984898}
-  decreaseSpeed: 5
+  decreaseSpeed: 30
   recoverySpeed: 20
   staminaBarFadeInDelay: 5
+  depleted: 0
   isABot: 0
   rigidBody: {fileID: 3266015314477885520}
   cameraTransform: {fileID: 0}
