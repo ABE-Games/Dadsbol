@@ -1,11 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using EasyTransition;
+using UnityEngine;
 using Utils;
 
 namespace UI
-{    public class Win : MonoBehaviour{
+{
+    public class Win : MonoBehaviour
+    {
         public TransitionSettings transition;
         [StringInList(typeof(PropertyDrawersHelper), "AllSceneNames")]
         [SerializeField] private string transitionTo;

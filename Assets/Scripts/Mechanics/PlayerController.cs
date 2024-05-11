@@ -11,8 +11,8 @@ namespace Mechanics
         [Header("Player Movement Controls")]
         public Vector3 velocity;
         [Range(0f, 200f)] public float speed;
-        public float originalSpeed;
         [Range(0f, 200f)] public float strafeSpeed;
+        public float originalSpeed;
         [Range(0f, 200f)] public float sprintBoost;
         [Range(0, 100f)] public float jumpForce;
         [Range(0, 20f)] public float throwForce;
