@@ -1,4 +1,8 @@
+using Gameplay;
+using UI;
 using UnityEngine;
+using UnityEngine.UI;
+using static Core.Simulation;
 
 namespace Mechanics
 {
@@ -7,12 +11,22 @@ namespace Mechanics
         [Header("Player Movement Controls")]
         public Vector3 velocity;
         [Range(0f, 200f)] public float speed;
+        public float originalSpeed;
         [Range(0f, 200f)] public float strafeSpeed;
         [Range(0f, 200f)] public float sprintBoost;
         [Range(0, 100f)] public float jumpForce;
         [Range(0, 20f)] public float throwForce;
         public bool isGrounded;
-        public bool allowGrabAndThrow;
+        public bool controlEnabled;
+
+        [Header("Stamina Controls")]
+        public Slider staminaSlider;
+        public UIOpacity background;
+        public UIOpacity fill;
+        [Range(0, 100f)] public float decreaseSpeed;
+        [Range(0, 100f)] public float recoverySpeed;
+        [Range(0, 10f)] public float staminaBarFadeInDelay;
+        public bool depleted;
 
         [Header("Bot Controls")]
         public bool isABot;
@@ -23,6 +37,12 @@ namespace Mechanics
         public ConfigurableJoint configurableJoint;
         public Animator animator;
         public ParticleSystem dustParticleSystem;
+
+        private void Start()
+        {
+            depleted = false;
+            originalSpeed = speed;
+        }
 
         private void FixedUpdate()
         {
@@ -40,6 +60,10 @@ namespace Mechanics
 
                 // Normalize the forward direction to ensure consistent speed
                 cameraForward.Normalize();
+
+                // Stamina bar listener/handler
+                var ev = Schedule<PlayerStaminaBar>();
+                ev.staminaBarFadeInDelay = staminaBarFadeInDelay;
 
                 // if a key has been pressed, move the player
                 if (Input.anyKey)
@@ -69,27 +93,27 @@ namespace Mechanics
         {
             if (Input.GetKey(KeyCode.W))
             {
-                rigidBody.AddForce((Input.GetKey(KeyCode.LeftShift))
+                rigidBody.AddForce((Input.GetKey(KeyCode.LeftShift) && !depleted)
                     ? ((speed + sprintBoost) * cameraForward)
                     : (speed * cameraForward));
             }
 
             if (Input.GetKey(KeyCode.A))
             {
-                rigidBody.AddForce((Input.GetKey(KeyCode.LeftShift))
+                rigidBody.AddForce((Input.GetKey(KeyCode.LeftShift) && !depleted)
                     ? ((sprintBoost + strafeSpeed) * -cameraTransform.right)
                     : (-cameraTransform.right * strafeSpeed));
             }
 
             if (Input.GetKey(KeyCode.S))
             {
-                rigidBody.AddForce((Input.GetKey(KeyCode.LeftShift))
+                rigidBody.AddForce((Input.GetKey(KeyCode.LeftShift) && !depleted)
                     ? ((speed + sprintBoost) * -cameraForward)
                     : (-speed * cameraForward));
             }
             if (Input.GetKey(KeyCode.D))
             {
-                rigidBody.AddForce((Input.GetKey(KeyCode.LeftShift))
+                rigidBody.AddForce((Input.GetKey(KeyCode.LeftShift) && !depleted)
                     ? ((sprintBoost + strafeSpeed) * cameraTransform.right)
                     : (strafeSpeed * cameraTransform.right));
             }
