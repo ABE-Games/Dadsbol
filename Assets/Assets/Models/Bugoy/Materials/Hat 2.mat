@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Hat
+  m_Name: Hat 2
   m_Shader: {fileID: 4800000, guid: 119cbdd5b9df2614a967a7e87c49e415, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []

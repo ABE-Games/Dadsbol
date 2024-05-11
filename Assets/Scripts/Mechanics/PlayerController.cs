@@ -12,6 +12,7 @@ namespace Mechanics
         [Range(0, 100f)] public float jumpForce;
         [Range(0, 20f)] public float throwForce;
         public bool isGrounded;
+        public bool allowGrabAndThrow;
 
         [Header("Bot Controls")]
         public bool isABot;

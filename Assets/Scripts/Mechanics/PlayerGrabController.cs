@@ -15,50 +15,47 @@ public class PlayerGrabController : MonoBehaviour
 
     private void Update()
     {
-        if (!model.player.isABot)
+        if (Input.GetKey(KeyCode.Mouse0))
         {
-            if (Input.GetKey(KeyCode.Mouse0))
+            isGrabbing = true;
+            if (grabbedObject != null)
             {
-                isGrabbing = true;
-                if (grabbedObject != null)
-                {
-                    Debug.Log("DEBUG: Grabbing " + grabbedObject.gameObject.name);
+                Debug.Log("DEBUG: Grabbing " + grabbedObject.gameObject.name);
 
-                    grabbedObject.transform.position = objectPlacement.position;
-                    grabbedObject.transform.rotation = objectPlacement.rotation;
-                    grabbedObject.transform.parent = objectPlacement;
+                grabbedObject.transform.position = objectPlacement.position;
+                grabbedObject.transform.rotation = objectPlacement.rotation;
+                grabbedObject.transform.parent = objectPlacement;
 
-                    // Disable the rigidbody of the object so it doesn't fall
-                    Rigidbody rb = grabbedObject.GetComponent<Rigidbody>();
-                    rb.isKinematic = true;
-                }
-
-                model.player.animator.SetBool("Grabbing", true);
+                // Disable the rigidbody of the object so it doesn't fall
+                Rigidbody rb = grabbedObject.GetComponent<Rigidbody>();
+                rb.isKinematic = true;
             }
-            else
+
+            model.player.animator.SetBool("Grabbing", true);
+        }
+        else
+        {
+            isGrabbing = false;
+            if (grabbedObject != null)
             {
-                isGrabbing = false;
-                if (grabbedObject != null)
+                Debug.Log("DEBUG: Not grabbing " + grabbedObject.gameObject.name);
+
+                // Enable the rigidbody of the object so it can fall
+                Rigidbody rb = grabbedObject.GetComponent<Rigidbody>();
+                rb.isKinematic = false;
+                grabbedObject.transform.parent = null;
+
+                if (Input.GetKeyUp(KeyCode.Mouse0))
                 {
-                    Debug.Log("DEBUG: Not grabbing " + grabbedObject.gameObject.name);
+                    var ev = Schedule<PlayerThrow>();
+                    ev.direction = objectPlacement;
+                    ev.objectRigidBody = rb;
 
-                    // Enable the rigidbody of the object so it can fall
-                    Rigidbody rb = grabbedObject.GetComponent<Rigidbody>();
-                    rb.isKinematic = false;
-                    grabbedObject.transform.parent = null;
-
-                    if (Input.GetKeyUp(KeyCode.Mouse0))
-                    {
-                        var ev = Schedule<PlayerThrow>();
-                        ev.direction = objectPlacement;
-                        ev.objectRigidBody = rb;
-
-                        StartCoroutine(ReleaseGrabbedObject());
-                    }
+                    StartCoroutine(ReleaseGrabbedObject());
                 }
-
-                model.player.animator.SetBool("Grabbing", false);
             }
+
+            model.player.animator.SetBool("Grabbing", false);
         }
     }
 
