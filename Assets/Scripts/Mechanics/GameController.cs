@@ -1,38 +1,82 @@
-﻿using Core;
-using Model;
+using EasyTransition;
+using UI;
 using UnityEngine;
+using Utils;
 
-namespace Mechanics
+public class GameController : MonoBehaviour
 {
     /// <summary>
-    /// This class exposes the the game model in the inspector, and ticks the
-    /// simulation.
-    /// </summary> 
-    public class GameController : MonoBehaviour
+    /// This scene name is used to determine the current scene in the game.
+    /// This will determine whether or not to show the game champion screen or 
+    /// just a normal level win.
+    /// </summary>
+    [Header("Street")]
+    [StringInList(typeof(PropertyDrawersHelper), "AllSceneNames")]
+    public string currentScene;
+
+    /// <summary>
+    /// This transition settings is used to transition between scenes.
+    /// This will be used to transition between the game over screen, the game
+    /// winner screen, and the next level screen. 
+    /// </summary>
+    [Header("Scene Transitions")]
+    public TransitionSettings transition;
+    [StringInList(typeof(PropertyDrawersHelper), "AllSceneNames")]
+    [SerializeField] private string nextLevelScene;
+    [StringInList(typeof(PropertyDrawersHelper), "AllSceneNames")]
+    [SerializeField] private string gameOverScene;
+    [StringInList(typeof(PropertyDrawersHelper), "AllSceneNames")]
+    [SerializeField] private string gameWinnerScene;
+    [Range(0, 20f)][SerializeField] private float transitionDelay;
+
+    [Header("Game Settings")]
+    public bool gameOver = false;
+    public bool gameWon = false;
+    public bool gamePaused = false;
+    public bool gameStart = false;
+
+    [Header("Cinematic Introduction Controls")]
+    public CountdownTimer initialCountdownText;
+
+    private void Start()
     {
-        public static GameController Instance { get; private set; }
+        // 1. Start the cinematic camera action.
+        // 2. After the cinematic camera action, start the countdown.
+        // 3. After the countdown, start the game.
+        initialCountdownText.timeRun = true;
+    }
 
-        //This model field is public and can be therefore be modified in the 
-        //inspector.
-        //The reference actually comes from the InstanceRegister, and is shared
-        //through the simulation and events. Unity will deserialize over this
-        //shared reference when the scene loads, allowing the model to be
-        //conveniently configured inside the inspector.
-        public ABEModel model = Simulation.GetModel<ABEModel>();
-
-        void OnEnable()
+    private void Update()
+    {
+        if (!initialCountdownText.timeRun)
         {
-            Instance = this;
+            initialCountdownText.gameObject.SetActive(false);
+
+            // The countdown is finished. Start the game.
+            gameStart = true;
         }
+    }
 
-        void OnDisable()
+    public void GameOver()
+    {
+        TransitionManager.Instance().Transition(gameOverScene, transition, transitionDelay);
+    }
+
+    public void GameWon()
+    {
+        // If the current scene contains the word [2.3] then we know that the
+        // player has won the game and became champion.
+        if (currentScene.Contains("2.3"))
         {
-            if (Instance == this) Instance = null;
+            TransitionManager.Instance().Transition(gameWinnerScene, transition, transitionDelay);
         }
-
-        void Update()
+        else
         {
-            if (Instance == this) Simulation.Tick();
+            // Show a normal level win screen.
+            // ...
+
+            // Transition to the next level.
+            TransitionManager.Instance().Transition(nextLevelScene, transition, transitionDelay);
         }
     }
 }

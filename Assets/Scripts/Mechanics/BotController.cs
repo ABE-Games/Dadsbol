@@ -1,26 +1,31 @@
+using Core;
 using Mechanics;
+using Model;
 using UnityEngine;
 
 public class BotController : MonoBehaviour
 {
-    [Range(0f, 1000f)] public float botSpeed = 5f;
-
     private float changeDirectionInterval;
     private float elapsedTime = 0f;
     private Vector3 targetDirection;
 
     private PlayerController player;
+    private readonly ABEModel model = Simulation.GetModel<ABEModel>();
 
     private void Start()
     {
         player = GetComponent<PlayerController>();
-        changeDirectionInterval = Random.Range(1f, 5f);
-        targetDirection = GetRandomDirection();
+
+        if (player.controlEnabled)
+        {
+            changeDirectionInterval = Random.Range(1f, 5f);
+            targetDirection = GetRandomDirection();
+        }
     }
 
     private void Update()
     {
-        if (player.isABot)
+        if (model.gameController.gameStart && player.isABot)
         {
             // Update elapsed time
             elapsedTime += Time.deltaTime;
@@ -36,7 +41,11 @@ public class BotController : MonoBehaviour
             Vector3 inverseTargetDir = new Vector3(-targetDirection.x, 0, targetDirection.z);
 
             player.configurableJoint.targetRotation = Quaternion.LookRotation(inverseTargetDir);
-            player.rigidBody.AddForce(targetDirection * botSpeed);
+            player.rigidBody.AddForce(targetDirection * player.speed);
+        }
+        else
+        {
+
         }
     }
 

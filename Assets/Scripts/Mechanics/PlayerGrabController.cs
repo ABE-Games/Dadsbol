@@ -18,7 +18,7 @@ public class PlayerGrabController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.Mouse0))
+        if (Input.GetKey(KeyCode.Mouse0) && model.player.controlEnabled)
         {
             isGrabbing = true;
             if (grabbedObject != null)

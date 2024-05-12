@@ -1,4 +1,6 @@
+using Core;
 using Gameplay;
+using Model;
 using UI;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,7 +13,6 @@ namespace Mechanics
         [Header("Player Movement Controls")]
         public Vector3 velocity;
         [Range(0f, 200f)] public float speed;
-        [Range(0f, 200f)] public float strafeSpeed;
         public float originalSpeed;
         [Range(0f, 200f)] public float sprintBoost;
         [Range(0, 100f)] public float jumpForce;
@@ -38,6 +39,8 @@ namespace Mechanics
         public Animator animator;
         public ParticleSystem dustParticleSystem;
 
+        private readonly ABEModel model = Simulation.GetModel<ABEModel>();
+
         private void Start()
         {
             depleted = false;
@@ -46,35 +49,42 @@ namespace Mechanics
 
         private void FixedUpdate()
         {
-            if (!isABot)
+            if (model.gameController.gameStart)
             {
-                // Move the direction of the player based on the movement direction
-                float horizontal = Input.GetAxis("Horizontal");
-                float vertical = Input.GetAxis("Vertical");
-
-                velocity = new Vector3(horizontal, 0, vertical);
-
-                // Get the forward direction of the camera
-                Vector3 cameraForward = cameraTransform.forward;
-                cameraForward.y = 0f;
-
-                // Normalize the forward direction to ensure consistent speed
-                cameraForward.Normalize();
-
-                // Stamina bar listener/handler
-                var ev = Schedule<PlayerStaminaBar>();
-                ev.staminaBarFadeInDelay = staminaBarFadeInDelay;
-
-                // if a key has been pressed, move the player
-                if (Input.anyKey)
+                controlEnabled = true;
+                if (!isABot && controlEnabled)
                 {
-                    PlayerJump();
-                    PlayerMovement(cameraForward);
-                    PlayerRotation(velocity.x, velocity.z);
+                    // Move the direction of the player based on the movement direction
+                    float horizontal = Input.GetAxis("Horizontal");
+                    float vertical = Input.GetAxis("Vertical");
+
+                    velocity = new Vector3(horizontal, 0, vertical);
+
+                    // Get the forward direction of the camera
+                    Vector3 cameraForward = cameraTransform.forward;
+                    cameraForward.y = 0f;
+
+                    // Normalize the forward direction to ensure consistent speed
+                    cameraForward.Normalize();
+
+                    // Stamina bar listener/handler
+                    var ev = Schedule<PlayerStaminaBar>();
+                    ev.staminaBarFadeInDelay = staminaBarFadeInDelay;
+
+                    // if a key has been pressed, move the player
+                    if (Input.anyKey)
+                    {
+                        PlayerJump();
+                        PlayerMovement(cameraForward);
+                        PlayerRotation(velocity.x, velocity.z);
+                    }
+
+                    OnIdle(horizontal, vertical);
                 }
-
-                OnIdle(horizontal, vertical);
-
+            }
+            else
+            {
+                controlEnabled = false;
             }
         }
 
@@ -101,8 +111,8 @@ namespace Mechanics
             if (Input.GetKey(KeyCode.A))
             {
                 rigidBody.AddForce((Input.GetKey(KeyCode.LeftShift) && !depleted)
-                    ? ((sprintBoost + strafeSpeed) * -cameraTransform.right)
-                    : (-cameraTransform.right * strafeSpeed));
+                    ? ((sprintBoost + speed) * -cameraTransform.right)
+                    : (-cameraTransform.right * speed));
             }
 
             if (Input.GetKey(KeyCode.S))
@@ -114,8 +124,8 @@ namespace Mechanics
             if (Input.GetKey(KeyCode.D))
             {
                 rigidBody.AddForce((Input.GetKey(KeyCode.LeftShift) && !depleted)
-                    ? ((sprintBoost + strafeSpeed) * cameraTransform.right)
-                    : (strafeSpeed * cameraTransform.right));
+                    ? ((sprintBoost + speed) * cameraTransform.right)
+                    : (speed * cameraTransform.right));
             }
         }
 

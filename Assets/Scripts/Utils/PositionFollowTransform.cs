@@ -1,8 +1,8 @@
 using UnityEngine;
 
-namespace UI
+namespace Utils
 {
-    public class PlayerIndicatorFollow : MonoBehaviour
+    public class PositionFollowTransform : MonoBehaviour
     {
         [SerializeField] private Transform player;
 
