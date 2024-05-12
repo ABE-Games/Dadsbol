@@ -30,30 +30,45 @@ public class GameController : MonoBehaviour
     [Range(0, 20f)][SerializeField] private float transitionDelay;
 
     [Header("Game Settings")]
-    public bool gameOver = false;
-    public bool gameWon = false;
-    public bool gamePaused = false;
-    public bool gameStart = false;
+    public bool finishedTeamCloseup;
+    public bool gameOver;
+    public bool gameWon;
+    public bool gamePaused;
+    public bool gameStart;
 
     [Header("Cinematic Introduction Controls")]
     public CountdownTimer initialCountdownText;
-
-    private void Start()
-    {
-        // 1. Start the cinematic camera action.
-        // 2. After the cinematic camera action, start the countdown.
-        // 3. After the countdown, start the game.
-        initialCountdownText.timeRun = true;
-    }
+    private bool invokedStartCountdown = false;
 
     private void Update()
     {
-        if (!initialCountdownText.timeRun)
+        // 1. Start the cinematic camera action.
+        // 2. After the cinematic camera action, start the countdown.
+        if (finishedTeamCloseup)
         {
-            initialCountdownText.gameObject.SetActive(false);
+            // 3. After the countdown, start the game.
+            StartTimer();
 
-            // The countdown is finished. Start the game.
-            gameStart = true;
+            if (!initialCountdownText.timeRun)
+            {
+                initialCountdownText.gameObject.SetActive(false);
+
+                // The countdown is finished. Start the game.
+                gameStart = true;
+            }
+        }
+
+    }
+
+    private void StartTimer()
+    {
+        // This is to prevent the countdown from starting multiple times.
+        // This will only start the countdown once. Since this is called in the Update method.
+        if (!invokedStartCountdown)
+        {
+            initialCountdownText.gameObject.SetActive(true);
+            initialCountdownText.timeRun = true;
+            invokedStartCountdown = true;
         }
     }
 
