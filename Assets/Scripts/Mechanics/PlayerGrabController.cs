@@ -8,8 +8,6 @@ using static Core.Simulation;
 public class PlayerGrabController : MonoBehaviour
 {
     [SerializeField] private Transform objectPlacement;
-    //[SerializeField] private ConfigurableJoint leftHandJoint;
-    //[SerializeField] private ConfigurableJoint rightHandJoint;
 
     private GameObject grabbedObject;
     [SerializeField] private bool isGrabbing;
