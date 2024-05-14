@@ -2674,7 +2674,6 @@ GameObject:
   - component: {fileID: 6844472026540712966}
   - component: {fileID: 6844472026540712965}
   - component: {fileID: 6844472026540712964}
-  - component: {fileID: 7855958667467878354}
   m_Layer: 0
   m_Name: Bugoy
   m_TagString: Player
@@ -2768,18 +2767,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 6844472026540712966}
---- !u!114 &7855958667467878354
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6844472026540712963}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a48f298fa49e334694d0c5efc3f2ad0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &7028949091851819648
 GameObject:
   m_ObjectHideFlags: 0
