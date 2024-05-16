@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2906711220220226100}
   m_Layer: 0
   m_Name: Elbow.L
-  m_TagString: Untagged
+  m_TagString: Bot Parts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -366,7 +366,7 @@ GameObject:
   - component: {fileID: 1612738982234743106}
   m_Layer: 0
   m_Name: Pelvis.R
-  m_TagString: Untagged
+  m_TagString: Bot Parts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -475,12 +475,12 @@ ConfigurableJoint:
   m_RotationDriveMode: 0
   m_AngularXDrive:
     serializedVersion: 3
-    positionSpring: 400
+    positionSpring: 1000
     positionDamper: 0
     maximumForce: 3.4028233e+38
   m_AngularYZDrive:
     serializedVersion: 3
-    positionSpring: 200
+    positionSpring: 1000
     positionDamper: 0
     maximumForce: 3.4028233e+38
   m_SlerpDrive:
@@ -527,7 +527,7 @@ GameObject:
   - component: {fileID: 1627825777841951762}
   m_Layer: 0
   m_Name: Elbow.R
-  m_TagString: Untagged
+  m_TagString: Bot Parts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -688,7 +688,7 @@ GameObject:
   - component: {fileID: 1847628807029805049}
   m_Layer: 0
   m_Name: Shoulder.L
-  m_TagString: Untagged
+  m_TagString: Bot Parts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -846,7 +846,7 @@ GameObject:
   - component: {fileID: 5405504980166573716}
   m_Layer: 0
   m_Name: Hand.L
-  m_TagString: Untagged
+  m_TagString: Bot Parts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -913,7 +913,7 @@ GameObject:
   - component: {fileID: 3089040888920068817}
   m_Layer: 0
   m_Name: Foot.R
-  m_TagString: Untagged
+  m_TagString: Bot Parts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1058,7 +1058,7 @@ GameObject:
   - component: {fileID: 3273874984277623616}
   m_Layer: 0
   m_Name: Foot.L
-  m_TagString: Untagged
+  m_TagString: Bot Parts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1204,7 +1204,7 @@ GameObject:
   - component: {fileID: 3438297857356601613}
   m_Layer: 0
   m_Name: Shoulder.R
-  m_TagString: Untagged
+  m_TagString: Bot Parts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1365,7 +1365,7 @@ GameObject:
   - component: {fileID: 3628177579223319902}
   m_Layer: 0
   m_Name: Torso
-  m_TagString: Untagged
+  m_TagString: Bot Parts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1476,12 +1476,12 @@ ConfigurableJoint:
   m_RotationDriveMode: 0
   m_AngularXDrive:
     serializedVersion: 3
-    positionSpring: 400
+    positionSpring: 1000
     positionDamper: 0
     maximumForce: 3.4028233e+38
   m_AngularYZDrive:
     serializedVersion: 3
-    positionSpring: 200
+    positionSpring: 1000
     positionDamper: 0
     maximumForce: 3.4028233e+38
   m_SlerpDrive:
@@ -1528,7 +1528,7 @@ GameObject:
   - component: {fileID: 4213454405992618075}
   m_Layer: 0
   m_Name: Skeleton
-  m_TagString: Untagged
+  m_TagString: Bot Parts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1654,12 +1654,12 @@ ConfigurableJoint:
   m_RotationDriveMode: 0
   m_AngularXDrive:
     serializedVersion: 3
-    positionSpring: 400
+    positionSpring: 1000
     positionDamper: 0
     maximumForce: 3.4028233e+38
   m_AngularYZDrive:
     serializedVersion: 3
-    positionSpring: 200
+    positionSpring: 1000
     positionDamper: 0
     maximumForce: 3.4028233e+38
   m_SlerpDrive:
@@ -1843,7 +1843,7 @@ GameObject:
   - component: {fileID: 8804534125724491750}
   m_Layer: 0
   m_Name: Sean
-  m_TagString: Player
+  m_TagString: Bot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1899,13 +1899,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: {x: 0, y: 0, z: 0}
-  speed: 100
+  speed: 50
   originalSpeed: 0
   sprintBoost: 50
   jumpForce: 50
   throwForce: 10
   isGrounded: 0
   controlEnabled: 0
+  allowGrabbing: 0
+  isGrabbing: 0
   staminaSlider: {fileID: 0}
   background: {fileID: 0}
   fill: {fileID: 0}
@@ -1914,6 +1916,7 @@ MonoBehaviour:
   staminaBarFadeInDelay: 0
   depleted: 0
   isABot: 1
+  teamBot: 1
   rigidBody: {fileID: 4213454405992618084}
   cameraTransform: {fileID: 0}
   configurableJoint: {fileID: 4213454405992618075}
@@ -1944,6 +1947,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a48f298fa49e334694d0c5efc3f2ad0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  allowCatchRadius: 2
+  catchRadius: 4
+  targetDirection: {x: 0, y: 0, z: 0}
+  inverseRotation: 1
 --- !u!1 &5736604205520797369
 GameObject:
   m_ObjectHideFlags: 0
@@ -1958,7 +1965,7 @@ GameObject:
   - component: {fileID: 2577255741127207573}
   m_Layer: 0
   m_Name: Neck
-  m_TagString: Untagged
+  m_TagString: Bot Parts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2119,7 +2126,7 @@ GameObject:
   - component: {fileID: 1288761350444109444}
   m_Layer: 0
   m_Name: Pelvis.L
-  m_TagString: Untagged
+  m_TagString: Bot Parts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2228,12 +2235,12 @@ ConfigurableJoint:
   m_RotationDriveMode: 0
   m_AngularXDrive:
     serializedVersion: 3
-    positionSpring: 400
+    positionSpring: 1000
     positionDamper: 0
     maximumForce: 3.4028233e+38
   m_AngularYZDrive:
     serializedVersion: 3
-    positionSpring: 200
+    positionSpring: 1000
     positionDamper: 0
     maximumForce: 3.4028233e+38
   m_SlerpDrive:
@@ -2277,7 +2284,7 @@ GameObject:
   - component: {fileID: 2354728717780803735}
   m_Layer: 0
   m_Name: Hand.R
-  m_TagString: Untagged
+  m_TagString: Bot Parts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

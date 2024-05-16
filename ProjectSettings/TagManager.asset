@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Ground
   - Interactable
+  - Interactable (Grabbed)
+  - Bounds
+  - Bot
+  - Bot Parts
   layers:
   - Default
   - TransparentFX

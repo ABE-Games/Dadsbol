@@ -1,26 +1,34 @@
 using Core;
-using Gameplay;
+using Mechanics;
 using Model;
 using System.Collections;
 using UnityEngine;
-using static Core.Simulation;
 
-public class PlayerGrabController : MonoBehaviour
+public class BotGrabController : MonoBehaviour
 {
+    [Range(0f, 10f)]
+    public float releaseDelay = 2f;
     [SerializeField] private Transform objectPlacement;
-
-    private GameObject grabbedObject;
+    [HideInInspector] public GameObject grabbedObject;
+    private PlayerController player;
 
     private readonly ABEModel model = Simulation.GetModel<ABEModel>();
 
+    private void Start()
+    {
+        player = GetComponent<PlayerController>();
+    }
+
     private void Update()
     {
-        if (Input.GetKey(KeyCode.Mouse0) && model.player.controlEnabled)
+        if (player.isGrabbing && player.allowGrabbing)
         {
-            model.player.isGrabbing = true;
             if (grabbedObject != null)
             {
                 Debug.Log("DEBUG: Grabbing " + grabbedObject.gameObject.name);
+
+                // Make the grabbedObject tag to be default
+                grabbedObject.tag = "Interactable (Grabbed)";
 
                 grabbedObject.transform.position = objectPlacement.position;
                 grabbedObject.transform.rotation = objectPlacement.rotation;
@@ -29,13 +37,14 @@ public class PlayerGrabController : MonoBehaviour
                 // Disable the rigidbody of the object so it doesn't fall
                 Rigidbody rb = grabbedObject.GetComponent<Rigidbody>();
                 rb.isKinematic = true;
+
+                StartCoroutine(ReleaseGrabbedObject(rb));
             }
 
-            model.player.animator.SetBool("Grabbing", true);
+            player.animator.SetBool("Grabbing", true);
         }
         else
         {
-            model.player.isGrabbing = false;
             if (grabbedObject != null)
             {
                 Debug.Log("DEBUG: Not grabbing " + grabbedObject.gameObject.name);
@@ -44,35 +53,30 @@ public class PlayerGrabController : MonoBehaviour
                 Rigidbody rb = grabbedObject.GetComponent<Rigidbody>();
                 rb.isKinematic = false;
                 grabbedObject.transform.parent = null;
-
-                if (Input.GetKeyUp(KeyCode.Mouse0))
-                {
-                    var ev = Schedule<PlayerThrow>();
-                    ev.direction = objectPlacement;
-                    ev.objectRigidBody = rb;
-
-                    StartCoroutine(ReleaseGrabbedObject());
-                }
             }
 
-            model.player.animator.SetBool("Grabbing", false);
+            player.animator.SetBool("Grabbing", false);
         }
     }
 
-    private IEnumerator ReleaseGrabbedObject()
+    private IEnumerator ReleaseGrabbedObject(Rigidbody rb)
     {
-        yield return new WaitForSeconds(1f);
+        // Wait a few seconds before throwing the interactable object
+        yield return new WaitForSeconds(releaseDelay);
+
         if (grabbedObject != null)
         {
-            grabbedObject = null;
-        }
-    }
+            grabbedObject.tag = "Interactable";
+            player.allowGrabbing = false;
 
-    private void OnTriggerEnter(Collider collider)
-    {
-        if (collider.gameObject.CompareTag("Interactable") && !model.player.isGrabbing)
-        {
-            grabbedObject = collider.gameObject;
+            rb.isKinematic = false;
+            grabbedObject.transform.parent = null;
+            rb.AddForce(objectPlacement.forward.normalized * player.throwForce, ForceMode.Impulse);
+
+            grabbedObject = null;
+
+            yield return new WaitForSeconds(1f);
+            player.allowGrabbing = true;
         }
     }
 }

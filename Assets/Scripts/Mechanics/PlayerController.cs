@@ -20,6 +20,10 @@ namespace Mechanics
         public bool isGrounded;
         public bool controlEnabled;
 
+        [Header("Player Grab Controls")]
+        public bool allowGrabbing;
+        public bool isGrabbing;
+
         [Header("Stamina Controls")]
         public Slider staminaSlider;
         public UIOpacity background;
@@ -31,6 +35,7 @@ namespace Mechanics
 
         [Header("Bot Controls")]
         public bool isABot;
+        public bool teamBot;
 
         [Header("Properties")]
         public Rigidbody rigidBody;
