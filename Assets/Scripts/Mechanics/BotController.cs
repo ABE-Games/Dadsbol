@@ -32,7 +32,7 @@ public class BotController : MonoBehaviour
         }
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (model.gameController.gameStart && player.controlEnabled)
         {
@@ -102,7 +102,7 @@ public class BotController : MonoBehaviour
         if (!player.isGrabbing)
         {
             // Move towards the target direction
-            Vector3 inverseTargetDir = new Vector3(targetDirection.x, targetDirection.y, -targetDirection.z);
+            Vector3 inverseTargetDir = new Vector3(targetDirection.x, targetDirection.y, -targetDirection.z).normalized;
             player.configurableJoint.targetRotation = Quaternion.LookRotation((inverseRotation) ? -targetDirection : targetDirection);
             player.rigidBody.AddForce(inverseTargetDir * player.speed);
 
