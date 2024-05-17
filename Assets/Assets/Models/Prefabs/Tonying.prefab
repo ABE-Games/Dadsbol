@@ -2035,7 +2035,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: {x: 0, y: 0, z: 0}
-  speed: 5
+  speed: 2
   originalSpeed: 0
   sprintBoost: 50
   jumpForce: 50
