@@ -308,6 +308,7 @@ MonoBehaviour:
   staminaBarFadeInDelay: 0
   depleted: 0
   isABot: 1
+  teamBot: 0
   rigidBody: {fileID: 9181601168657038588}
   cameraTransform: {fileID: 0}
   configurableJoint: {fileID: 9181601168657038531}
@@ -341,6 +342,7 @@ MonoBehaviour:
   allowCatchRadius: 2
   catchRadius: 4
   targetDirection: {x: 0, y: 0, z: 0}
+  inverseRotation: 0
 --- !u!114 &251955783089686607
 MonoBehaviour:
   m_ObjectHideFlags: 0

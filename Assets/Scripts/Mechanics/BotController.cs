@@ -15,22 +15,29 @@ public class BotController : MonoBehaviour
 
     private PlayerController player;
     private readonly ABEModel model = Simulation.GetModel<ABEModel>();
+    private bool init = true;
 
     private void Start()
     {
         player = GetComponent<PlayerController>();
+    }
 
-        if (player.controlEnabled)
+    private void InitDirection()
+    {
+        if (init)
         {
             changeDirectionInterval = Random.Range(1f, 5f);
             targetDirection = GetRandomDirection();
+            init = false;
         }
     }
 
     private void Update()
     {
-        if (model.gameController.gameStart)
+        if (model.gameController.gameStart && player.controlEnabled)
         {
+            InitDirection();
+
             // Update elapsed time
             elapsedTime += Time.deltaTime;
 
@@ -91,12 +98,13 @@ public class BotController : MonoBehaviour
 
     private void Move()
     {
+
         if (!player.isGrabbing)
         {
             // Move towards the target direction
             Vector3 inverseTargetDir = new Vector3(targetDirection.x, targetDirection.y, -targetDirection.z);
             player.configurableJoint.targetRotation = Quaternion.LookRotation((inverseRotation) ? -targetDirection : targetDirection);
-            player.rigidBody.AddForce(inverseTargetDir);
+            player.rigidBody.AddForce(inverseTargetDir * player.speed);
 
             // Debugging
             // Draw the inverse target direction

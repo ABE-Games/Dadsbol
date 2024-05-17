@@ -2199,8 +2199,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a48f298fa49e334694d0c5efc3f2ad0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  allowCatchRadius: 2
-  catchRadius: 4
+  allowCatchRadius: 0
+  catchRadius: 0
   targetDirection: {x: 0, y: 0, z: 0}
   inverseRotation: 1
 --- !u!1 &5242920903006362956
