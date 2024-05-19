@@ -1,0 +1,34 @@
+{
+    "name": "PlayerInput",
+    "maps": [
+        {
+            "name": "Start",
+            "id": "930c9c8b-d484-48b0-8773-6653a27515ac",
+            "actions": [
+                {
+                    "name": "Click to Start",
+                    "type": "Button",
+                    "id": "cabe26bc-8e88-432f-9119-00f7b4afdb45",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "51b7ab83-27a1-4fa9-898e-0be8d6c9390f",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Click to Start",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

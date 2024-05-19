@@ -4,8 +4,32 @@ namespace Mechanics
 {
     public class BallController : MonoBehaviour
     {
+        public bool onStartScreen;
+
         [Header("Particle System")]
         public ParticleSystem explosion;
+
+        private void Update()
+        {
+            if (onStartScreen)
+            {
+                // Shoot the ball wherever the mouse is pointing and clicked at
+                if (Input.GetMouseButtonDown(0))
+                {
+                    explosion.Play();
+                    Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                    RaycastHit hit;
+
+                    if (Physics.Raycast(ray, out hit))
+                    {
+                        Rigidbody rb = GetComponent<Rigidbody>();
+                        rb.isKinematic = false;
+                        rb.AddForce((hit.point - transform.position).normalized * 1000f);
+                        onStartScreen = false;
+                    }
+                }
+            }
+        }
 
         private void OnCollisionEnter(Collision collision)
         {

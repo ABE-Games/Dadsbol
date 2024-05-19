@@ -16,7 +16,8 @@ namespace UI
 
             if (image != null)
             {
-                image.color = new Color(0.5f, 0.5f, 0.5f, Mathf.Sin(count) * 0.5f);
+                float alpha = (Mathf.Sin(count) * 0.5f) + 0.5f;
+                image.color = new Color(1, 1, 1, alpha);
             }
         }
     }

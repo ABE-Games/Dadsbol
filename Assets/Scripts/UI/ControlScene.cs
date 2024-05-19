@@ -1,7 +1,7 @@
 using EasyTransition;
 using UnityEngine;
-using Utils;
 using UnityEngine.UI;  // Make sure you have this to work with UI elements
+using Utils;
 
 public class ControlScene : MonoBehaviour
 {
@@ -43,6 +43,8 @@ public class ControlScene : MonoBehaviour
         // Hide all images first
         foreach (Image img in images)
         {
+            Animator anim = images[currentImageIndex].GetComponent<Animator>();
+            anim.SetBool("Flip", true);
             img.gameObject.SetActive(false);
         }
 
