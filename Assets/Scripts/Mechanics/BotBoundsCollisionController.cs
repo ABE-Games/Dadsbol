@@ -7,10 +7,14 @@ public class BotBoundsCollisionController : MonoBehaviour
         if (collision.gameObject.CompareTag("Bot Parts"))
         {
             // Get the botController component of the bot
-            BotController botController = GetRootParent(collision.transform).gameObject.GetComponent<BotController>();
+            Transform collTransform = GetRootParent(collision.transform);
+            if (collTransform != null)
+            {
+                BotController botController = collTransform.gameObject.GetComponent<BotController>();
 
-            // Reverse the target facing direction of the bot
-            botController.targetDirection = -botController.targetDirection;
+                // Reverse the target facing direction of the bot
+                botController.targetDirection = -botController.targetDirection;
+            }
         }
     }
 

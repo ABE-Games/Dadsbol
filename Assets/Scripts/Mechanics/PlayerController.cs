@@ -18,6 +18,7 @@ namespace Mechanics
         [Range(0, 100f)] public float jumpForce;
         [Range(0, 20f)] public float throwForce;
         public bool isGrounded;
+        public bool isHit;
         public bool controlEnabled;
 
         [Header("Player Grab Controls")]
@@ -57,8 +58,11 @@ namespace Mechanics
             if (model.gameController.gameStart)
             {
                 controlEnabled = true;
+
                 if (!isABot && controlEnabled)
                 {
+                    allowGrabbing = true;
+
                     // Move the direction of the player based on the movement direction
                     float horizontal = Input.GetAxis("Horizontal");
                     float vertical = Input.GetAxis("Vertical");
@@ -85,6 +89,13 @@ namespace Mechanics
                     }
 
                     OnIdle(horizontal, vertical);
+                }
+
+                if (isHit)
+                {
+                    var ev = Schedule<PlayerHit>();
+                    ev.player = this;
+                    ev.animator = animator;
                 }
             }
             else

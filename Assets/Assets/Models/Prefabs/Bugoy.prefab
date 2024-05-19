@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 93340178244489590}
   m_Layer: 0
   m_Name: Pelvis.R
-  m_TagString: Untagged
+  m_TagString: Player Parts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -267,7 +267,7 @@ GameObject:
   - component: {fileID: 125316842547864614}
   m_Layer: 0
   m_Name: Elbow.R
-  m_TagString: Untagged
+  m_TagString: Player Parts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -462,7 +462,7 @@ GameObject:
   - component: {fileID: 6642303440114470560}
   m_Layer: 0
   m_Name: Hand.L
-  m_TagString: Untagged
+  m_TagString: Player Parts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -496,7 +496,7 @@ GameObject:
   - component: {fileID: 1048808159621447629}
   m_Layer: 0
   m_Name: Shoulder.L
-  m_TagString: Untagged
+  m_TagString: Player Parts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -846,7 +846,7 @@ GameObject:
   - component: {fileID: 4574728816207878656}
   m_Layer: 0
   m_Name: Elbow.L
-  m_TagString: Untagged
+  m_TagString: Player Parts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1007,7 +1007,7 @@ GameObject:
   - component: {fileID: 3266015314477885551}
   m_Layer: 0
   m_Name: Skeleton
-  m_TagString: Untagged
+  m_TagString: Player Parts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1173,7 +1173,7 @@ GameObject:
   - component: {fileID: 2698753092377818474}
   m_Layer: 0
   m_Name: Torso
-  m_TagString: Untagged
+  m_TagString: Player Parts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1560,7 +1560,7 @@ GameObject:
   - component: {fileID: 4079500699718920505}
   m_Layer: 0
   m_Name: Shoulder.R
-  m_TagString: Untagged
+  m_TagString: Player Parts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1720,7 +1720,7 @@ GameObject:
   - component: {fileID: 4198804117833511796}
   m_Layer: 0
   m_Name: Foot.L
-  m_TagString: Untagged
+  m_TagString: Player Parts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1955,7 +1955,7 @@ GameObject:
   - component: {fileID: 4464333562919969509}
   m_Layer: 0
   m_Name: Foot.R
-  m_TagString: Untagged
+  m_TagString: Player Parts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2101,7 +2101,7 @@ GameObject:
   - component: {fileID: 488812582631079600}
   m_Layer: 0
   m_Name: Pelvis.L
-  m_TagString: Untagged
+  m_TagString: Player Parts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2424,7 +2424,7 @@ GameObject:
   - component: {fileID: 3814062468887943841}
   m_Layer: 0
   m_Name: Neck
-  m_TagString: Untagged
+  m_TagString: Player Parts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7592,7 +7592,7 @@ GameObject:
   - component: {fileID: 1225667216307525381}
   m_Layer: 0
   m_Name: Head
-  m_TagString: Untagged
+  m_TagString: Player Parts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7624,7 +7624,7 @@ GameObject:
   - component: {fileID: 4001352201199046819}
   m_Layer: 0
   m_Name: Hand.R
-  m_TagString: Untagged
+  m_TagString: Player Parts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7785,7 +7785,7 @@ GameObject:
   - component: {fileID: 4534867846036167550}
   m_Layer: 0
   m_Name: Hat
-  m_TagString: Untagged
+  m_TagString: Player Parts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

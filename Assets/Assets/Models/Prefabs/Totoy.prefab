@@ -135,6 +135,7 @@ MonoBehaviour:
   jumpForce: 50
   throwForce: 10
   isGrounded: 0
+  isHit: 0
   controlEnabled: 0
   allowGrabbing: 0
   isGrabbing: 0
@@ -179,6 +180,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowCatchRadius: 0
   catchRadius: 0
+  willCatch: 0
   targetDirection: {x: 0, y: 0, z: 0}
   inverseRotation: 1
 --- !u!1 &1097120786405963344
@@ -195,7 +197,7 @@ GameObject:
   - component: {fileID: 7161008018950300284}
   m_Layer: 0
   m_Name: Neck
-  m_TagString: Untagged
+  m_TagString: Bot Parts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -356,7 +358,7 @@ GameObject:
   - component: {fileID: 5856890865108239981}
   m_Layer: 0
   m_Name: Pelvis.L
-  m_TagString: Untagged
+  m_TagString: Bot Parts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -514,7 +516,7 @@ GameObject:
   - component: {fileID: 6920044580050364542}
   m_Layer: 0
   m_Name: Hand.R
-  m_TagString: Untagged
+  m_TagString: Bot Parts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5357,7 +5359,7 @@ GameObject:
   - component: {fileID: 5083779577389297624}
   m_Layer: 0
   m_Name: Head
-  m_TagString: Untagged
+  m_TagString: Bot Parts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5391,7 +5393,7 @@ GameObject:
   - component: {fileID: 7562657437961347805}
   m_Layer: 0
   m_Name: Elbow.L
-  m_TagString: Untagged
+  m_TagString: Bot Parts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5651,7 +5653,7 @@ GameObject:
   - component: {fileID: 6211150259734109435}
   m_Layer: 0
   m_Name: Elbow.R
-  m_TagString: Untagged
+  m_TagString: Bot Parts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5812,7 +5814,7 @@ GameObject:
   - component: {fileID: 6252363130731391403}
   m_Layer: 0
   m_Name: Pelvis.R
-  m_TagString: Untagged
+  m_TagString: Bot Parts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6065,7 +6067,7 @@ GameObject:
   - component: {fileID: 6413506536851818256}
   m_Layer: 0
   m_Name: Shoulder.L
-  m_TagString: Untagged
+  m_TagString: Bot Parts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6223,7 +6225,7 @@ GameObject:
   - component: {fileID: 838079135750715005}
   m_Layer: 0
   m_Name: Hand.L
-  m_TagString: Untagged
+  m_TagString: Bot Parts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6290,7 +6292,7 @@ GameObject:
   - component: {fileID: 7672789032837077560}
   m_Layer: 0
   m_Name: Foot.R
-  m_TagString: Untagged
+  m_TagString: Bot Parts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6435,7 +6437,7 @@ GameObject:
   - component: {fileID: 7911242728273300393}
   m_Layer: 0
   m_Name: Foot.L
-  m_TagString: Untagged
+  m_TagString: Bot Parts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6581,7 +6583,7 @@ GameObject:
   - component: {fileID: 8003471601238708708}
   m_Layer: 0
   m_Name: Shoulder.R
-  m_TagString: Untagged
+  m_TagString: Bot Parts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6742,7 +6744,7 @@ GameObject:
   - component: {fileID: 8285676507575881143}
   m_Layer: 0
   m_Name: Torso
-  m_TagString: Untagged
+  m_TagString: Bot Parts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6905,7 +6907,7 @@ GameObject:
   - component: {fileID: 8853075066423218354}
   m_Layer: 0
   m_Name: Skeleton
-  m_TagString: Untagged
+  m_TagString: Bot Parts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

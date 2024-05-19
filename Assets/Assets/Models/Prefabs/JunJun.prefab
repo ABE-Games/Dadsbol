@@ -113,7 +113,7 @@ GameObject:
   - component: {fileID: 2632111424947662637}
   m_Layer: 0
   m_Name: Elbow.L
-  m_TagString: Untagged
+  m_TagString: Bot Parts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -271,7 +271,7 @@ GameObject:
   - component: {fileID: 5176222784609598349}
   m_Layer: 0
   m_Name: Hand.L
-  m_TagString: Untagged
+  m_TagString: Bot Parts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -530,7 +530,7 @@ GameObject:
   - component: {fileID: 1893385389580783883}
   m_Layer: 0
   m_Name: Elbow.R
-  m_TagString: Untagged
+  m_TagString: Bot Parts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2157,6 +2157,7 @@ MonoBehaviour:
   jumpForce: 50
   throwForce: 10
   isGrounded: 0
+  isHit: 0
   controlEnabled: 0
   allowGrabbing: 0
   isGrabbing: 0
@@ -2201,6 +2202,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   allowCatchRadius: 0
   catchRadius: 0
+  willCatch: 0
   targetDirection: {x: 0, y: 0, z: 0}
   inverseRotation: 1
 --- !u!1 &5242920903006362956
@@ -2516,7 +2518,7 @@ GameObject:
   - component: {fileID: 3205499000709096846}
   m_Layer: 0
   m_Name: Hand.R
-  m_TagString: Untagged
+  m_TagString: Bot Parts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2547,7 +2549,7 @@ GameObject:
   - component: {fileID: 790910793176244776}
   m_Layer: 0
   m_Name: Head
-  m_TagString: Untagged
+  m_TagString: Bot Parts
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

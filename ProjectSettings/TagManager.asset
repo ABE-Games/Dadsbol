@@ -10,6 +10,7 @@ TagManager:
   - Bounds
   - Bot
   - Bot Parts
+  - Player Parts
   layers:
   - Default
   - TransparentFX

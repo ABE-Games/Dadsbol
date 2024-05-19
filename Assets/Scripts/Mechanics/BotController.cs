@@ -7,11 +7,14 @@ public class BotController : MonoBehaviour
 {
     [Range(0f, 10f)] public float allowCatchRadius = 1f;
     [Range(0f, 10f)] public float catchRadius = 1f;
+    public bool willCatch;
     public Vector3 targetDirection;
     public bool inverseRotation;
 
     private float changeDirectionInterval;
-    private float elapsedTime = 0f;
+    private float elapsedTimeChangeDir = 0f;
+    private float changeCatchDecisionInterval;
+    private float elapsedTimeCatchDec = 0f;
 
     private PlayerController player;
     private readonly ABEModel model = Simulation.GetModel<ABEModel>();
@@ -26,7 +29,8 @@ public class BotController : MonoBehaviour
     {
         if (init)
         {
-            changeDirectionInterval = Random.Range(1f, 5f);
+            changeDirectionInterval = Random.Range(2f, 5f);
+            changeCatchDecisionInterval = Random.Range(5f, 10f);
             targetDirection = GetRandomDirection();
             init = false;
         }
@@ -39,17 +43,26 @@ public class BotController : MonoBehaviour
             InitDirection();
 
             // Update elapsed time
-            elapsedTime += Time.deltaTime;
+            elapsedTimeChangeDir += Time.deltaTime;
+            elapsedTimeCatchDec += Time.deltaTime;
 
             // If it's time to change direction, get a new random direction
-            if (elapsedTime >= changeDirectionInterval)
+            if (elapsedTimeChangeDir >= changeDirectionInterval)
             {
                 targetDirection = GetRandomDirection();
-                elapsedTime = 0f;
+                elapsedTimeChangeDir = 0f;
+            }
+
+            if (elapsedTimeCatchDec >= changeCatchDecisionInterval)
+            {
+                willCatch = Random.Range(0, 2) == 0;
+                elapsedTimeCatchDec = 0f;
             }
 
             // Get the gameobject that has entered the catch radius
             Collider[] colliders = Physics.OverlapSphere(player.configurableJoint.gameObject.transform.position, catchRadius);
+
+
             foreach (Collider collider in colliders)
             {
                 if (!player.teamBot && collider.gameObject.CompareTag("Interactable"))
@@ -63,7 +76,7 @@ public class BotController : MonoBehaviour
                     // If the player is close enough to the ball, catch it
                     bool catchable = Vector3.Distance(player.configurableJoint.gameObject.transform.position, collider.transform.position) <= allowCatchRadius;
 
-                    if (player.allowGrabbing && catchable)
+                    if (player.allowGrabbing && catchable && willCatch)
                     {
                         Debug.Log($"DEBUG({gameObject.name.ToUpper()}): Ball caught.");
 
@@ -98,7 +111,6 @@ public class BotController : MonoBehaviour
 
     private void Move()
     {
-
         if (!player.isGrabbing)
         {
             // Move towards the target direction

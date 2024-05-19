@@ -15,13 +15,15 @@ public class PlayerGrabController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.Mouse0) && model.player.controlEnabled)
+        if (Input.GetKey(KeyCode.Mouse0) && model.player.controlEnabled && model.player.allowGrabbing)
         {
             model.player.isGrabbing = true;
+
             if (grabbedObject != null)
             {
                 Debug.Log("DEBUG: Grabbing " + grabbedObject.gameObject.name);
 
+                grabbedObject.tag = "Interactable (Grabbed)";
                 grabbedObject.transform.position = objectPlacement.position;
                 grabbedObject.transform.rotation = objectPlacement.rotation;
                 grabbedObject.transform.parent = objectPlacement;
@@ -36,6 +38,7 @@ public class PlayerGrabController : MonoBehaviour
         else
         {
             model.player.isGrabbing = false;
+
             if (grabbedObject != null)
             {
                 Debug.Log("DEBUG: Not grabbing " + grabbedObject.gameObject.name);
@@ -48,6 +51,7 @@ public class PlayerGrabController : MonoBehaviour
                 if (Input.GetKeyUp(KeyCode.Mouse0))
                 {
                     var ev = Schedule<PlayerThrow>();
+                    StartCoroutine(RevertTag());
                     ev.direction = objectPlacement;
                     ev.objectRigidBody = rb;
 
@@ -64,8 +68,18 @@ public class PlayerGrabController : MonoBehaviour
         yield return new WaitForSeconds(1f);
         if (grabbedObject != null)
         {
+            model.player.allowGrabbing = false;
             grabbedObject = null;
+
+            yield return new WaitForSeconds(1f);
+            model.player.allowGrabbing = true;
         }
+    }
+
+    private IEnumerator RevertTag()
+    {
+        yield return new WaitForSeconds(0.35f);
+        grabbedObject.tag = "Interactable";
     }
 
     private void OnTriggerEnter(Collider collider)
