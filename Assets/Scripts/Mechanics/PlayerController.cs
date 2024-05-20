@@ -45,6 +45,9 @@ namespace Mechanics
         public Animator animator;
         public ParticleSystem dustParticleSystem;
 
+        [Header("SFX")]
+        public AudioSource hitSFX;
+
         private readonly ABEModel model = Simulation.GetModel<ABEModel>();
 
         private void Start()
@@ -57,8 +60,6 @@ namespace Mechanics
         {
             if (model.gameController.gameStart)
             {
-                controlEnabled = true;
-
                 if (!isABot && controlEnabled)
                 {
                     allowGrabbing = true;
@@ -96,6 +97,10 @@ namespace Mechanics
                     var ev = Schedule<PlayerHit>();
                     ev.player = this;
                     ev.animator = animator;
+                }
+                else
+                {
+                    controlEnabled = true;
                 }
             }
             else

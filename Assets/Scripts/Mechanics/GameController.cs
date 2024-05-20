@@ -1,4 +1,6 @@
 using EasyTransition;
+using System;
+using System.Collections;
 using UI;
 using UnityEngine;
 using Utils;
@@ -35,10 +37,18 @@ public class GameController : MonoBehaviour
     public bool gameWon;
     public bool gamePaused;
     public bool gameStart;
+    public int remainingTeamPlayers;
+    public int remainingEnemyPlayers;
 
     [Header("Cinematic Introduction Controls")]
     public CountdownTimer initialCountdownText;
     private bool invokedStartCountdown = false;
+
+    [Header("Audio")]
+    public AudioClip whistleSFX;
+    public AudioClip winSFX;
+    public AudioClip loseSFX;
+    public AudioSource gameSounds;
 
     private void Update()
     {
@@ -55,9 +65,10 @@ public class GameController : MonoBehaviour
 
                 // The countdown is finished. Start the game.
                 gameStart = true;
+                gameSounds.clip = whistleSFX;
+                gameSounds.PlayOneShot(whistleSFX, 0.25f);
             }
         }
-
     }
 
     private void StartTimer()
@@ -74,24 +85,41 @@ public class GameController : MonoBehaviour
 
     public void GameOver()
     {
-        TransitionManager.Instance().Transition(gameOverScene, transition, transitionDelay);
+        gameSounds.clip = loseSFX;
+        gameSounds.PlayOneShot(loseSFX, 0.15f);
+
+        Wait(3.5f, () =>
+        {
+            TransitionManager.Instance().Transition(gameOverScene, transition, transitionDelay);
+        });
     }
 
     public void GameWon()
     {
-        // If the current scene contains the word [2.3] then we know that the
-        // player has won the game and became champion.
-        if (currentScene.Contains("2.3"))
-        {
-            TransitionManager.Instance().Transition(gameWinnerScene, transition, transitionDelay);
-        }
-        else
-        {
-            // Show a normal level win screen.
-            // ...
+        gameSounds.PlayOneShot(winSFX, 0.35f);
 
-            // Transition to the next level.
-            TransitionManager.Instance().Transition(nextLevelScene, transition, transitionDelay);
-        }
+        Wait(3.5f, () =>
+        {
+            // If the current scene contains the word [2.3] then we know that the
+            // player has won the game and became champion.
+            if (currentScene.Contains("2.3"))
+            {
+                TransitionManager.Instance().Transition(gameWinnerScene, transition, transitionDelay);
+            }
+            else
+            {
+                // Show a normal level win screen.
+                // ...
+
+                // Transition to the next level.
+                TransitionManager.Instance().Transition(nextLevelScene, transition, transitionDelay);
+            }
+        });
+    }
+
+    private IEnumerator Wait(float delay, Action callback)
+    {
+        yield return new WaitForSeconds(delay);
+        callback?.Invoke();
     }
 }

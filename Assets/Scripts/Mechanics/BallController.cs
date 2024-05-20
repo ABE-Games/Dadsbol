@@ -4,10 +4,14 @@ namespace Mechanics
 {
     public class BallController : MonoBehaviour
     {
+        [Range(1000f, 100000f)] public float explosionForce = 50000f;
         public bool onStartScreen;
 
         [Header("Particle System")]
         public ParticleSystem explosion;
+
+        [Header("Audio")]
+        public AudioSource bounceSFX;
 
         private void Update()
         {
@@ -41,7 +45,7 @@ namespace Mechanics
 
                     // Explode the collided object above
                     Rigidbody rb = collision.gameObject.GetComponent<Rigidbody>();
-                    rb.AddExplosionForce(50000f, collision.contacts[0].point, 10f);
+                    rb.AddExplosionForce(explosionForce, collision.contacts[0].point, 10f);
 
                     // Player/Bot hit
                     Transform collTransform = GetRootParent(collision.transform);
