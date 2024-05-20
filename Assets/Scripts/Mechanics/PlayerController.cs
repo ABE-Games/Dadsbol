@@ -15,11 +15,13 @@ namespace Mechanics
         [Range(0f, 50f)] public float speed;
         public float originalSpeed;
         [Range(0f, 200f)] public float sprintBoost;
-        [Range(0, 100f)] public float jumpForce;
-        [Range(0, 20f)] public float throwForce;
+        [Range(0f, 100f)] public float jumpForce;
+        [Range(0f, 20f)] public float throwForce;
         public bool isGrounded;
         public bool isHit;
         public bool controlEnabled;
+        public bool isImune;
+        [Range(0f, 15f)] public float powerUpCooldown;
 
         [Header("Player Grab Controls")]
         public bool allowGrabbing;
@@ -29,9 +31,9 @@ namespace Mechanics
         public Slider staminaSlider;
         public UIOpacity background;
         public UIOpacity fill;
-        [Range(0, 100f)] public float decreaseSpeed;
-        [Range(0, 100f)] public float recoverySpeed;
-        [Range(0, 10f)] public float staminaBarFadeInDelay;
+        [Range(0f, 100f)] public float decreaseSpeed;
+        [Range(0f, 100f)] public float recoverySpeed;
+        [Range(0f, 10f)] public float staminaBarFadeInDelay;
         public bool depleted;
 
         [Header("Bot Controls")]
@@ -44,6 +46,8 @@ namespace Mechanics
         public ConfigurableJoint configurableJoint;
         public Animator animator;
         public ParticleSystem dustParticleSystem;
+        public ParticleSystem imuneParticleSystem;
+        [HideInInspector] public bool teamHitDeduct;
 
         [Header("SFX")]
         public AudioSource hitSFX;
@@ -53,6 +57,7 @@ namespace Mechanics
         private void Start()
         {
             depleted = false;
+            teamHitDeduct = true;
             originalSpeed = speed;
         }
 
@@ -92,7 +97,7 @@ namespace Mechanics
                     OnIdle(horizontal, vertical);
                 }
 
-                if (isHit)
+                if (isHit && !isImune)
                 {
                     var ev = Schedule<PlayerHit>();
                     ev.player = this;
@@ -101,6 +106,7 @@ namespace Mechanics
                 else
                 {
                     controlEnabled = true;
+                    isHit = false;
                 }
             }
             else

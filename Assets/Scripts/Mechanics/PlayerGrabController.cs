@@ -65,7 +65,7 @@ public class PlayerGrabController : MonoBehaviour
 
     private IEnumerator ReleaseGrabbedObject()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.3f);
         if (grabbedObject != null)
         {
             model.player.allowGrabbing = false;
@@ -78,7 +78,7 @@ public class PlayerGrabController : MonoBehaviour
 
     private IEnumerator RevertTag()
     {
-        yield return new WaitForSeconds(0.35f);
+        yield return new WaitForSeconds(0.3f);
         grabbedObject.tag = "Interactable";
     }
 
