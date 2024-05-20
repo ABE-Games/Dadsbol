@@ -7,6 +7,8 @@ namespace Model
     {
         public Cinemachine.CinemachineVirtualCamera virtualCamera;
 
+        public Cinemachine.CinemachineVirtualCamera broadcastViewCamera;
+
         public PlayerController player;
 
         public GameController gameController;

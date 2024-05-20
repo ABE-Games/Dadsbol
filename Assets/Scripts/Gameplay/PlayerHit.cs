@@ -9,7 +9,6 @@ namespace Gameplay
     {
         public PlayerController player;
         public Animator animator;
-        private bool decremented = true;
 
         private readonly ABEModel model = Simulation.GetModel<ABEModel>();
 
@@ -30,21 +29,25 @@ namespace Gameplay
                 {
                     // Set the layer to be "Invisible"
                     part.gameObject.layer = invisibleLayer;
+                    DecrementPlayerCount();
                 }
             }
 
-            animator.SetBool("Hit", true);
+            if (!player.isABot)
+            {
+                model.broadcastViewCamera.gameObject.SetActive(true);
+            }
 
-            DecrementPlayerCount();
+            animator.SetBool("Hit", true);
         }
 
         private void DecrementPlayerCount()
         {
-            if (decremented)
+            if (player.teamHitDeduct)
             {
-                if (player.teamBot) model.gameController.remainingTeamPlayers--;
+                if (player.teamBot || !player.isABot) model.gameController.remainingTeamPlayers--;
                 else model.gameController.remainingEnemyPlayers--;
-                decremented = false;
+                player.teamHitDeduct = false;
             }
         }
     }
