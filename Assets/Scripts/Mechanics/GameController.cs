@@ -2,7 +2,6 @@ using Core;
 using EasyTransition;
 using Model;
 using System;
-using TMPro;
 using UI;
 using UnityEngine;
 using Utils;
@@ -43,8 +42,8 @@ namespace Mechanics
         public bool gameStart;
         public int remainingTeamPlayers;
         public int remainingEnemyPlayers;
-        public TextMeshProUGUI winnerText;
-        public TextMeshProUGUI loseText;
+        public GameObject winnerGameObject;
+        public GameObject loseGameObject;
 
         [Header("Cinematic Introduction Controls")]
         public CountdownTimer initialCountdownText;
@@ -107,15 +106,14 @@ namespace Mechanics
 
         public void GameOver()
         {
+            loseGameObject.SetActive(true);
             gameSounds.clip = loseSFX;
             gameSounds.PlayOneShot(loseSFX, 0.15f);
-
-            TransitionManager.Instance().Transition(gameOverScene, transition, transitionDelay);
         }
 
         public void GameWon()
         {
-            winnerText.gameObject.SetActive(true);
+            winnerGameObject.SetActive(true);
             gameSounds.PlayOneShot(winSFX, 0.35f);
 
             // If the current scene contains the word [2.3] then we know that the

@@ -26,6 +26,16 @@ namespace UI
             TransitionManager.Instance().Transition(transitionTo, transition, transitionDelay);
         }
 
+        public void PlayAgain()
+        {
+            // Get the current scene name
+            string currentScene = model.gameController.currentScene;
+            if (currentScene != null)
+            {
+                TransitionManager.Instance().Transition(currentScene, transition, transitionDelay);
+            }
+        }
+
         public void PauseGame()
         {
             Time.timeScale = 0;
