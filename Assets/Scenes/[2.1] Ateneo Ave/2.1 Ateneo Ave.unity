@@ -231,7 +231,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 458891944184069147, guid: 794e48ba62884af4495109c5ddcd6136, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 942834958006838945, guid: 794e48ba62884af4495109c5ddcd6136, type: 3}
       propertyPath: m_RootOrder
@@ -815,7 +815,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1584747870790556668, guid: ec7d5090eabac4446815d9e01245d1bf, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2212946810785710406, guid: ec7d5090eabac4446815d9e01245d1bf, type: 3}
       propertyPath: m_RootOrder
@@ -1013,7 +1013,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2035386972478021349, guid: 5fd7909997e08e14fbbb9d5e20bc00f9, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5fd7909997e08e14fbbb9d5e20bc00f9, type: 3}
@@ -6092,7 +6092,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4419600229629895022, guid: bd998953e64fe8048bcd3a339383412d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd998953e64fe8048bcd3a339383412d, type: 3}
@@ -12761,7 +12761,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1103831748130275603, guid: cfb3091cf25cddf4e8d3ec8ee8c2223d, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1465026163280820653, guid: cfb3091cf25cddf4e8d3ec8ee8c2223d, type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -12831,7 +12831,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2214972708401317457, guid: 598525470090ea84b97c87366bfd5fca, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 598525470090ea84b97c87366bfd5fca, type: 3}
@@ -13400,8 +13400,8 @@ MonoBehaviour:
   gameWon: 0
   gamePaused: 0
   gameStart: 0
-  remainingTeamPlayers: 3
-  remainingEnemyPlayers: 3
+  remainingTeamPlayers: 6
+  remainingEnemyPlayers: 6
   winnerText: {fileID: 810524997}
   loseText: {fileID: 0}
   initialCountdownText: {fileID: 1037669906}
