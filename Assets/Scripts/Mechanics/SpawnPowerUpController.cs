@@ -5,11 +5,15 @@ public class SpawnPowerUpController : MonoBehaviour
 {
     public GameObject powerupPrefab;
     public Vector2 delayRange;
+    [Range(1, 10)]
+    public int powerups;
 
     private void Start()
     {
-        StartCoroutine(SpawnPowerUp(delayRange.x, delayRange.y));
-        StartCoroutine(SpawnPowerUp(delayRange.x, delayRange.y));
+        for (int i = 0; i < powerups; i++)
+        {
+            StartCoroutine(SpawnPowerUp(delayRange.x, delayRange.y));
+        }
     }
 
     private IEnumerator SpawnPowerUp(float from, float to)

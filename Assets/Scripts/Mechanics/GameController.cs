@@ -131,14 +131,6 @@ namespace Mechanics
 
         public void GameWon()
         {
-            if (!gameVerdict)
-            {
-                gameplayMusic.Stop();
-                winnerGameObject.SetActive(true);
-                gameSoundsWin.PlayOneShot(winSFX);
-                gameVerdict = true;
-            }
-
             // If the current scene contains the word [2.3] then we know that the
             // player has won the game and became champion.
             if (currentScene.Contains("2.3"))
@@ -149,6 +141,13 @@ namespace Mechanics
             {
                 // Show a normal level win screen.
                 // ...
+                if (!gameVerdict)
+                {
+                    gameplayMusic.Stop();
+                    winnerGameObject.SetActive(true);
+                    gameSoundsWin.PlayOneShot(winSFX);
+                    gameVerdict = true;
+                }
 
                 // Transition to the next level.
                 TransitionManager.Instance().Transition(nextLevelScene, transition, transitionDelay);
