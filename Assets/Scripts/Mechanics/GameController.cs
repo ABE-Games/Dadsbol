@@ -61,14 +61,17 @@ namespace Mechanics
 
         private readonly ABEModel model = Simulation.GetModel<ABEModel>();
 
-        
+
         private void Start()
         {
-            // Preload the audio clip to avoid delay
-            gameSoundsLose.clip = loseSFX;
-            gameSoundsWin.clip = winSFX;
+            if (gameSoundsLose != null && gameSoundsWin != null)
+            {
+                // Preload the audio clip to avoid delay
+                gameSoundsLose.clip = loseSFX;
+                gameSoundsWin.clip = winSFX;
+            }
         }
-        
+
         private void Update()
         {
             // 1. Start the cinematic camera action.
@@ -117,7 +120,8 @@ namespace Mechanics
 
         public void GameOver()
         {
-            if (!gameVerdict){
+            if (!gameVerdict)
+            {
                 gameplayMusic.Stop();
                 loseGameObject.SetActive(true);
                 gameSoundsLose.PlayOneShot(loseSFX);
@@ -127,7 +131,8 @@ namespace Mechanics
 
         public void GameWon()
         {
-            if (!gameVerdict){
+            if (!gameVerdict)
+            {
                 gameplayMusic.Stop();
                 winnerGameObject.SetActive(true);
                 gameSoundsWin.PlayOneShot(winSFX);

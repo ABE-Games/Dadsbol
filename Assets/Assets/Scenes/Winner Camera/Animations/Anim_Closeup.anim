@@ -122,13 +122,6 @@ AnimationClip:
     intParameter: 0
     messageOptions: 0
   - time: 1.5
-    functionName: 
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 1.5
     functionName: ShowWinMenu
     data: 
     objectReferenceParameter: {fileID: 0}
