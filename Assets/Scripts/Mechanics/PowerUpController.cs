@@ -18,6 +18,10 @@ namespace Mechanics
         public PowerUps powerUp;
         private Animator animator;
 
+        [Header("Audio")]
+        public AudioClip collectedSFX;
+        public AudioSource audioSrc;
+
         private void Start()
         {
             // Randomize which power-up to use
@@ -30,6 +34,8 @@ namespace Mechanics
             if (other.CompareTag("Player Parts"))
             {
                 animator.SetTrigger("Collected");
+                audioSrc.clip = collectedSFX;
+                audioSrc.PlayOneShot(collectedSFX);
 
                 Transform collTransform = GetRootParent(other.transform);
                 if (collTransform != null)

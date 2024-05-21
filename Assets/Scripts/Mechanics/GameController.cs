@@ -72,8 +72,7 @@ namespace Mechanics
 
                     // The countdown is finished. Start the game.
                     gameStart = true;
-                    gameSounds.clip = whistleSFX;
-                    gameSounds.PlayOneShot(whistleSFX, 0.25f);
+                    gameSounds.PlayOneShot(whistleSFX);
                 }
             }
 
@@ -107,14 +106,13 @@ namespace Mechanics
         public void GameOver()
         {
             loseGameObject.SetActive(true);
-            gameSounds.clip = loseSFX;
-            gameSounds.PlayOneShot(loseSFX, 0.15f);
+            gameSounds.PlayOneShot(loseSFX);
         }
 
         public void GameWon()
         {
             winnerGameObject.SetActive(true);
-            gameSounds.PlayOneShot(winSFX, 0.35f);
+            gameSounds.PlayOneShot(winSFX);
 
             // If the current scene contains the word [2.3] then we know that the
             // player has won the game and became champion.

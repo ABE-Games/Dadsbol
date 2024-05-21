@@ -38,63 +38,66 @@ public class BotController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (model.gameController.gameStart && player.controlEnabled)
+        if (!player.isBenched)
         {
-            InitDirection();
-
-            // Update elapsed time
-            elapsedTimeChangeDir += Time.deltaTime;
-            elapsedTimeCatchDec += Time.deltaTime;
-
-            // If it's time to change direction, get a new random direction
-            if (elapsedTimeChangeDir >= changeDirectionInterval)
+            if (model.gameController.gameStart && player.controlEnabled)
             {
-                targetDirection = GetRandomDirection();
-                elapsedTimeChangeDir = 0f;
-            }
+                InitDirection();
 
-            if (elapsedTimeCatchDec >= changeCatchDecisionInterval)
-            {
-                willCatch = Random.Range(0, 2) == 0;
-                elapsedTimeCatchDec = 0f;
-            }
+                // Update elapsed time
+                elapsedTimeChangeDir += Time.deltaTime;
+                elapsedTimeCatchDec += Time.deltaTime;
 
-            // Get the gameobject that has entered the catch radius
-            Collider[] colliders = Physics.OverlapSphere(player.configurableJoint.gameObject.transform.position, catchRadius);
-
-
-            foreach (Collider collider in colliders)
-            {
-                if (!player.teamBot && collider.gameObject.CompareTag("Interactable"))
+                // If it's time to change direction, get a new random direction
+                if (elapsedTimeChangeDir >= changeDirectionInterval)
                 {
-                    // If the player is not already caught, catch the player
-                    Debug.Log($"DEBUG({gameObject.name.ToUpper()}): Ball in range.");
+                    targetDirection = GetRandomDirection();
+                    elapsedTimeChangeDir = 0f;
+                }
 
-                    Vector3 ballPosition = collider.transform.position;
-                    MoveTowardsBall(ballPosition);
+                if (elapsedTimeCatchDec >= changeCatchDecisionInterval)
+                {
+                    willCatch = Random.Range(0, 2) == 0;
+                    elapsedTimeCatchDec = 0f;
+                }
 
-                    // If the player is close enough to the ball, catch it
-                    bool catchable = Vector3.Distance(player.configurableJoint.gameObject.transform.position, collider.transform.position) <= allowCatchRadius;
+                // Get the gameobject that has entered the catch radius
+                Collider[] colliders = Physics.OverlapSphere(player.configurableJoint.gameObject.transform.position, catchRadius);
 
-                    if (player.allowGrabbing && catchable && willCatch)
+
+                foreach (Collider collider in colliders)
+                {
+                    if (!player.teamBot && collider.gameObject.CompareTag("Interactable"))
                     {
-                        Debug.Log($"DEBUG({gameObject.name.ToUpper()}): Ball caught.");
+                        // If the player is not already caught, catch the player
+                        Debug.Log($"DEBUG({gameObject.name.ToUpper()}): Ball in range.");
 
-                        BotGrabController botGrabController = GetComponent<BotGrabController>();
-                        botGrabController.grabbedObject = collider.gameObject;
+                        Vector3 ballPosition = collider.transform.position;
+                        MoveTowardsBall(ballPosition);
 
-                        player.isGrabbing = true;
+                        // If the player is close enough to the ball, catch it
+                        bool catchable = Vector3.Distance(player.configurableJoint.gameObject.transform.position, collider.transform.position) <= allowCatchRadius;
 
-                        FaceTowardsPlayer();
+                        if (player.allowGrabbing && catchable && willCatch)
+                        {
+                            Debug.Log($"DEBUG({gameObject.name.ToUpper()}): Ball caught.");
+
+                            BotGrabController botGrabController = GetComponent<BotGrabController>();
+                            botGrabController.grabbedObject = collider.gameObject;
+
+                            player.isGrabbing = true;
+
+                            FaceTowardsPlayer();
+                        }
+                        else
+                        {
+                            player.isGrabbing = false;
+                        }
                     }
                     else
                     {
-                        player.isGrabbing = false;
+                        Move();
                     }
-                }
-                else
-                {
-                    Move();
                 }
             }
         }

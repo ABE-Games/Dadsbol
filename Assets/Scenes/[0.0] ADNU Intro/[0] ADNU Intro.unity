@@ -447,7 +447,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   transitionSettings: {fileID: 11400000, guid: b0126e1e0c6c2a04895d564bd230dfb9, type: 2}
   transitionTo: Main Menu
-  transitionDelay: 15
+  transitionDelay: 13
 --- !u!1 &801285293
 GameObject:
   m_ObjectHideFlags: 0

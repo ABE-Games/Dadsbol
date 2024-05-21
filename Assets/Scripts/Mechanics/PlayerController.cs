@@ -19,8 +19,9 @@ namespace Mechanics
         [Range(0f, 20f)] public float throwForce;
         public bool isGrounded;
         public bool isHit;
-        public bool controlEnabled;
         public bool isImune;
+        public bool isBenched;
+        public bool controlEnabled;
         [Range(0f, 15f)] public float powerUpCooldown;
 
         [Header("Player Grab Controls")]
@@ -50,7 +51,6 @@ namespace Mechanics
         [HideInInspector] public bool teamHitDeduct;
 
         [Header("SFX")]
-        public AudioSource hitSFX;
 
         private readonly ABEModel model = Simulation.GetModel<ABEModel>();
 
@@ -65,7 +65,7 @@ namespace Mechanics
         {
             if (model.gameController.gameStart)
             {
-                if (!isABot && controlEnabled)
+                if (!isABot && controlEnabled && !isBenched)
                 {
                     allowGrabbing = true;
 

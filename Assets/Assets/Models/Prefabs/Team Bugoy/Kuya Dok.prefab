@@ -394,14 +394,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   velocity: {x: 0, y: 0, z: 0}
-  speed: 2
+  speed: 15
   originalSpeed: 0
   sprintBoost: 50
   jumpForce: 50
   throwForce: 10
   isGrounded: 0
   isHit: 0
+  isImune: 0
+  isBenched: 0
   controlEnabled: 0
+  powerUpCooldown: 0
   allowGrabbing: 1
   isGrabbing: 0
   staminaSlider: {fileID: 0}
@@ -418,6 +421,8 @@ MonoBehaviour:
   configurableJoint: {fileID: 7372783322415044496}
   animator: {fileID: 1584747870790556665}
   dustParticleSystem: {fileID: 5774036631716997305}
+  imuneParticleSystem: {fileID: 0}
+  teamHitDeduct: 0
 --- !u!114 &1584747870790556667
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -9,6 +9,7 @@ public class SpawnPowerUpController : MonoBehaviour
     private void Start()
     {
         StartCoroutine(SpawnPowerUp(delayRange.x, delayRange.y));
+        StartCoroutine(SpawnPowerUp(delayRange.x, delayRange.y));
     }
 
     private IEnumerator SpawnPowerUp(float from, float to)

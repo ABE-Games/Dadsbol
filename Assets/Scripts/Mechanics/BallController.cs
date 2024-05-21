@@ -11,7 +11,9 @@ namespace Mechanics
         public ParticleSystem explosion;
 
         [Header("Audio")]
-        public AudioSource bounceSFX;
+        public AudioClip bounceSFX;
+        public AudioClip hitSFX;
+        public AudioSource audioSrc;
 
         private void Update()
         {
@@ -42,6 +44,8 @@ namespace Mechanics
                 if (collision.gameObject.CompareTag("Player Parts") || collision.gameObject.CompareTag("Bot Parts"))
                 {
                     explosion.Play();
+                    audioSrc.PlayOneShot(bounceSFX);
+                    audioSrc.PlayOneShot(hitSFX);
 
                     // Explode the collided object above
                     Rigidbody rb = collision.gameObject.GetComponent<Rigidbody>();
