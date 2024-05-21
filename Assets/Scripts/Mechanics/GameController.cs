@@ -40,6 +40,7 @@ namespace Mechanics
         public bool gameWon;
         public bool gamePaused;
         public bool gameStart;
+        public bool gameVerdict;
         public int remainingTeamPlayers;
         public int remainingEnemyPlayers;
         public GameObject winnerGameObject;
@@ -53,10 +54,21 @@ namespace Mechanics
         public AudioClip whistleSFX;
         public AudioClip winSFX;
         public AudioClip loseSFX;
-        public AudioSource gameSounds;
+        public AudioSource gameSoundsWhistle;
+        public AudioSource gameplayMusic;
+        public AudioSource gameSoundsLose;
+        public AudioSource gameSoundsWin;
 
         private readonly ABEModel model = Simulation.GetModel<ABEModel>();
 
+        
+        private void Start()
+        {
+            // Preload the audio clip to avoid delay
+            gameSoundsLose.clip = loseSFX;
+            gameSoundsWin.clip = winSFX;
+        }
+        
         private void Update()
         {
             // 1. Start the cinematic camera action.
@@ -72,7 +84,7 @@ namespace Mechanics
 
                     // The countdown is finished. Start the game.
                     gameStart = true;
-                    gameSounds.PlayOneShot(whistleSFX);
+                    gameSoundsWhistle.PlayOneShot(whistleSFX);
                 }
             }
 
@@ -105,14 +117,22 @@ namespace Mechanics
 
         public void GameOver()
         {
-            loseGameObject.SetActive(true);
-            gameSounds.PlayOneShot(loseSFX);
+            if (!gameVerdict){
+                gameplayMusic.Stop();
+                loseGameObject.SetActive(true);
+                gameSoundsLose.PlayOneShot(loseSFX);
+                gameVerdict = true;
+            }
         }
 
         public void GameWon()
         {
-            winnerGameObject.SetActive(true);
-            gameSounds.PlayOneShot(winSFX);
+            if (!gameVerdict){
+                gameplayMusic.Stop();
+                winnerGameObject.SetActive(true);
+                gameSoundsWin.PlayOneShot(winSFX);
+                gameVerdict = true;
+            }
 
             // If the current scene contains the word [2.3] then we know that the
             // player has won the game and became champion.

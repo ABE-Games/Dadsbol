@@ -27,6 +27,7 @@ namespace Mechanics
             // Randomize which power-up to use
             powerUp = (PowerUps)Random.Range(0, 4);
             animator = GetComponent<Animator>();
+            audioSrc.clip = collectedSFX;
         }
 
         private void OnTriggerEnter(Collider other)
@@ -34,7 +35,6 @@ namespace Mechanics
             if (other.CompareTag("Player Parts"))
             {
                 animator.SetTrigger("Collected");
-                audioSrc.clip = collectedSFX;
                 audioSrc.PlayOneShot(collectedSFX);
 
                 Transform collTransform = GetRootParent(other.transform);
