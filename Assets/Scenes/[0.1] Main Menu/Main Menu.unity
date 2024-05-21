@@ -1123,6 +1123,42 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5996833397452616445, guid: 636cebd034e31c244985c0c302070553, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5996833397710575420, guid: 636cebd034e31c244985c0c302070553, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6106677180571375527, guid: 636cebd034e31c244985c0c302070553, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6106677180571375527, guid: 636cebd034e31c244985c0c302070553, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6106677181900927295, guid: 636cebd034e31c244985c0c302070553, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6106677181900927295, guid: 636cebd034e31c244985c0c302070553, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6106677181900927295, guid: 636cebd034e31c244985c0c302070553, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6106677181900927295, guid: 636cebd034e31c244985c0c302070553, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6106677181900927295, guid: 636cebd034e31c244985c0c302070553, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6176585355706171065, guid: 636cebd034e31c244985c0c302070553, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -1178,6 +1214,10 @@ PrefabInstance:
     - target: {fileID: 6844472026540712965, guid: 636cebd034e31c244985c0c302070553, type: 3}
       propertyPath: teamBot
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8353461326566551232, guid: 636cebd034e31c244985c0c302070553, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 636cebd034e31c244985c0c302070553, type: 3}
@@ -2214,7 +2254,15 @@ MonoBehaviour:
   gameWon: 0
   gamePaused: 0
   gameStart: 1
+  remainingTeamPlayers: 0
+  remainingEnemyPlayers: 0
+  winnerGameObject: {fileID: 0}
+  loseGameObject: {fileID: 0}
   initialCountdownText: {fileID: 0}
+  whistleSFX: {fileID: 0}
+  winSFX: {fileID: 0}
+  loseSFX: {fileID: 0}
+  gameSounds: {fileID: 0}
 --- !u!114 &1373947073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2229,6 +2277,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   model:
     virtualCamera: {fileID: 1040855647}
+    broadcastViewCamera: {fileID: 0}
     player: {fileID: 0}
     gameController: {fileID: 1373947072}
 --- !u!4 &1373947074
@@ -3741,6 +3790,7 @@ MonoBehaviour:
   explosionForce: 50000
   onStartScreen: 1
   explosion: {fileID: 807446029544875179}
+  bounceSFX: {fileID: 0}
 --- !u!198 &807446028639288640
 ParticleSystem:
   m_ObjectHideFlags: 0
