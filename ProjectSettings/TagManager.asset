@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Ground
+  - Interactable
+  - Interactable (Grabbed)
+  - Bounds
+  - Bot
+  - Bot Parts
+  - Player Parts
   layers:
   - Default
   - TransparentFX
@@ -11,12 +18,12 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Post Processing
+  - Court Net
+  - Ball
+  - Invisible
+  - Bounds
+  - Hidden
   - 
   - 
   - 
