@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/[0.0] ADNU Intro/[0] ADNU Intro.unity
+    guid: db4c5c121e5c95f4f880ca0c90953b0b
+  - enabled: 1
     path: Assets/Scenes/[0.1] Main Menu/Main Menu.unity
     guid: 65ce256073e69a24980fa3927d3ef869
   - enabled: 1
@@ -20,9 +23,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/[2.3] Arana St/2.3 Arana St.unity
     guid: 88bce081e74c4cd44b7e12846b970d50
-  - enabled: 1
-    path: Assets/Scenes/[5] Game Over/Game Over.unity
-    guid: 5612b63e363ad7f4b9b3f54aa56cff8c
   - enabled: 1
     path: Assets/Scenes/[5] Winner/Winner.unity
     guid: e3e71e38f5d92994a9e2fc9f4cf5ce3b
