@@ -27,7 +27,7 @@
 
 ## **Contributors** 💪
 
-We greatly appreciate contributions to this project. Special thanks to the following contributors for their valuable input and efforts:
+We sincerely value contributions to this project. Special thanks to the following contributors for their significant input and efforts in creating and developing the system in recognition of the subject **CGAE203 2D Game Development. **
 
 - Emmanuel Dominic A. Esperida
 - Johcel Gene T. Bitara
